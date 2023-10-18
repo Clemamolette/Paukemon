@@ -1,0 +1,172 @@
+html {
+    font-family: "Open Sans", sans-serif; 
+    background-size: cover;
+    background-attachment: fixed;
+    background-color: rgb(221, 188, 157);
+    background-image: radial-gradient( ellipse farthest-corner at 10px 10px , rgb(79, 46, 16), rgb(89, 56, 25) 10%, rgb(221, 188, 157) 10%);
+    background-size: 10px 10px;
+}
+
+main {
+    margin: 20px auto 20px auto;          
+    padding: 10px 30px 20px 30px;
+    border-radius: 20px;
+    background: none;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header,
+footer {
+    border-radius: 20px;
+    text-align: center;
+    background-color: rgb(71, 37, 6);
+    color: white;
+    margin: auto;
+    margin-top:30px;
+    width: 60%;
+}
+footer {
+    padding:30px;
+}
+header {
+    padding:30px 30px 10px 30px;
+}
+
+.titre {
+    font-size: 60px;
+    font-family: 'Delicious Handrawn', cursive;
+    text-align: center;
+    margin: 10px;
+    color: rgb(221, 188, 157);
+}
+#gif {
+    height: 80px;
+    width: auto;
+    opacity:70%;
+    margin:10px;
+}
+
+.nom {
+    font-size: 40px;
+    font-family: 'Delicious Handrawn', cursive;
+    text-align: center;
+    margin: 0;
+    color: rgb(221, 188, 157);
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: 800;
+    text-align: center;
+    margin: 0;
+    padding: 10px 0;
+    color: rgb(71, 37, 6);
+}
+
+h3 {
+    font-size: 40px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 50px 0;
+    color: rgb(71, 37, 6);
+}
+  
+.pres {
+    text-align: center;
+    font-size: 23px;
+    color:rgb(71, 37, 6);
+    background-color: rgba(221, 188, 157,0.5);
+}
+
+fieldset {
+    border:2px solid rgb(71, 37, 6);
+}
+
+#gifHome {
+    height: 200px;
+    width: auto;
+}
+  
+img {
+    display: block;   /* il faut lui donner le comportement d'un block pour pouvoir la centrer avec le auto, sinon c'est un type in-block */
+    width: 350px;  
+}
+
+.erreur {
+    color: red;
+}
+  
+/* navigation */
+#liens {
+    background-color: rgb(71, 37, 6);
+    overflow: hidden;
+    display:flex;
+    flex-wrap: wrap;
+    margin: 10px auto 0px auto;
+}
+
+#liens a {
+    color: white;
+    text-align: center;
+    padding: 20px 20px;
+    text-decoration: none;  /* texte souligné */
+    font-size: 23px;
+    margin: auto; 
+}
+  
+#liens a:hover {
+    background-color: rgb(221, 188, 157);
+    color: black;
+    border-radius: 5px;
+}
+
+.description {
+    color: rgb(221, 188, 157);
+    margin:20px 10px 10px 40px;
+}
+
+/* petite fantaisie pour un bouton */
+.beauBouton {
+    font-family: "Open Sans", sans-serif; 
+    font-size:20px;
+    cursor: pointer;
+    color: rgb(71, 37, 6);
+    margin-top:20px;
+    padding: 10px 20px 10px 20px;
+    background: rgb(221, 188, 157);
+    border: 2px solid rgb(71, 37, 6);
+    border-radius: 10px;
+    }
+  
+.beauBouton::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: rgb(71, 37, 6);
+    border-radius: inherit;
+}
+.beauBouton:hover {
+    background: rgb(200, 170, 140);
+    -webkit-transform: translate(0, 5px);
+    transform: translate(0, 5px);
+}
+.beauBouton:hover::before {
+    -webkit-transform: translate3d(0, 5px, -5px);
+    transform: translate3d(0, 5px, -5px);
+}
+.beauBouton:active {
+    background: #edceba;
+    -webkit-transform: translate(0px, 10px);
+    transform: translate(0px, 10px);
+}
+.beauBouton:active::before {
+    -webkit-transform: translate3d(0, 0, -10px);
+    transform: translate3d(0, 0, -10px);
+}
+  
+  
+  

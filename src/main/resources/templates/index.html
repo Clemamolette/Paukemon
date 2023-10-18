@@ -1,5 +1,68 @@
+<!DOCTYPE html>
 <html>
+	<head>
+		<title>HTML Meta Tag</title>
+		<meta http-equiv="refresh" content="3; url=accueil" />
+		<link href="https://fonts.cdnfonts.com/css/minecraftia" rel="stylesheet">
+	</head>
 	<body>
-		hello les mamies
+		<div id="loader-container">
+			<div id="loader">
+				<img id="pokemon-image" alt="Loading Pokémon">
+			</div>
+			<div id="progress-bar"></div>
+			<p>Loading...</p>
+		</div>
+		<script>
+			const pokemonImage = document.getElementById('pokemon-image');
+			const randomPokemonNumber = Math.floor(Math.random() * 381) + 1;
+			pokemonImage.src = `https://www.pokebip.com/pokedex/images/e_animees/${String(randomPokemonNumber).padStart(3, '0')}.gif`;
+		</script>
 	</body>
 </html>
+
+<style>
+	html {
+		background-color: lavender;
+	}
+	body {
+		margin: 0;
+		padding: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
+	}
+	#loader-container {
+		text-align: center;
+	}
+	#loader img {
+		width: 120px;
+		height: auto;
+	}
+	#progress-bar {
+		width: 0;
+		height: 5px;
+		background-color: rebeccapurple;
+		margin-top: 10px;
+	}
+	p {
+		font-size: 18px;
+		font-family: 'Minecraftia', sans-serif;
+	}
+</style>
+
+<script>
+	const progressBar = document.getElementById('progress-bar');
+	let width = 0;
+	const duration = 2500; // millisecondes
+	function updateProgressBar() {
+		if (width >= 100) {
+			clearInterval(progressInterval);
+		} else {
+			width += (100 / (duration / 10));
+			progressBar.style.width = width + '%';
+		}
+	}
+	const progressInterval = setInterval(updateProgressBar, 10);
+</script>
