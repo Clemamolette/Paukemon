@@ -1,0 +1,16 @@
+<html>
+	<body>
+		<h1>Ajouter un nouveau pokemon :</h1>
+		<form action="/addPokemon" method="POST">
+			<label for="nom">Nom :</label>
+			<input id="nom" name="nom">
+			<label for="type">Type :</label>
+			<select id="type" name="type">
+				<option th:each="type : ${types}" th:value="${type.nom}">
+					<span th:text="${type.nom}"></span>
+				</option>
+			</select>
+			<button type="submit">Ajouter le pokemon</button>
+		</form>
+	</body>
+</html>

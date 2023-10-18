@@ -1,0 +1,16 @@
+2023-10-11 17:04:17 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-10-11 17:04:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-10-11 17:05:52 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-10-11 17:06:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-10-11 17:06:34 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-10-13 15:01:26 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM DIRECTOR FILM [*]DIRECTOR_FILMS"; SQL statement:
+SELECT * FROM DIRECTOR FILM DIRECTOR_FILMS [42000-214]
+2023-10-13 15:01:39 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM DIRECTOR FILM [*]DIRECTOR_FILMS"; SQL statement:
+SELECT * FROM DIRECTOR FILM DIRECTOR_FILMS [42000-214]
