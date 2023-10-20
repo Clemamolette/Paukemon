@@ -11,7 +11,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap" rel="stylesheet">
         <link href="https://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet">
         <!-- importation des scripts et styles -->
-        <script src="" defer></script>
+        <!--<script type="module" src="/resources/static/cartes.js" defer></script>-->
+        <link rel="stylesheet" href="/resources/static/miseEnPage.css" />
     </head>
 
     <body>
@@ -41,92 +42,6 @@
         <footer style="display:flex; flex-direction:column; align-items:center;">
             <p id="copyright" style="margin:2px; opacity:70%; margin-top:20px; ">coucou</p>
             <p style="margin:2px;opacity:70%;">©2023 Clémentine. Tous droits réservés.</p>
-
-
-
         </footer>
     </body>
 </html>
-
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-    }
-    html {
-        font-family: "Open Sans", sans-serif;
-        background-size: cover;
-        background-attachment: fixed;
-        background-color: lavender;
-        background-image: radial-gradient( ellipse farthest-corner at 10px 10px , rebeccapurple, rgb(238, 149, 234) 10%, lavender 10%);
-        background-size: 10px 10px;
-    }
-
-    main {
-        margin: 20px auto 20px auto;
-        padding: 10px 30px 20px 30px;
-        border-radius: 20px;
-        background: none;
-        display:flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    header,
-    footer {
-        text-align: center;
-        background-color: rebeccapurple;
-        color: lavender;
-        margin: auto;
-    }
-    footer {
-        margin-top: 30px;
-        padding:30px;
-    }
-    header {
-        padding:30px 30px 10px 30px;
-    }
-    .titre {
-        font-family: 'Pokemon Solid', sans-serif;
-        font-size: 100px;
-    }
-    .pres {
-        text-align: center;
-        font-size: 23px;
-        color:rebeccapurple;
-    }
-    fieldset {
-        border:2px solid rebeccapurple;
-        background-color: lavender;
-        height: 300px;
-    }
-
-    /* navigation */
-    #liens {
-        background-color: rebeccapurple;
-        overflow: hidden;
-        display:flex;
-        flex-wrap: wrap;
-        margin: 10px auto 0px auto;
-    }
-
-    #liens a {
-        color: lavender;
-        text-align: center;
-        padding: 20px 20px;
-        text-decoration: none;  /* texte souligné */
-        font-size: 23px;
-        margin: auto;
-    }
-
-    #liens a:hover {
-        background-color: lavender;
-        color: black;
-        border-radius: 5px;
-    }
-
-    #voltorbe {
-        height: 100px;
-        width: auto;
-    }
-</style>
