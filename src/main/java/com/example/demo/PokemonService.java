@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 public class PokemonService {
 
     private String apiURL = "https://api.pokemontcg.io/v2/cards?select=id,name,hp,types,nationalPokedexNumbers,images";
-    private String apiKEY = "e030d28b-a210-4552-bec5-3b63be6b970b";
+    private String apiKEY = "";
 
     public JsonNode getCards() {
         HttpResponse<JsonNode> jsonResponse;
