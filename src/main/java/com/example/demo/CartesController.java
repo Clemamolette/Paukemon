@@ -21,10 +21,34 @@ public class CartesController {
     @GetMapping("/mescartes")
     public String showCartes(Model model) {
 
-        ArrayList<ArrayList<String>> pokemonCardsData = null;
-        pokemonCardsData = pokemonService.getCards();
+        ArrayList<ArrayList<String>> pokemonCardsSTR = null;
+        pokemonCardsSTR = pokemonService.getCards();
+        JSONObject json;
 
-        model.addAttribute("pokemonCards", pokemonCardsData);
+        ArrayList<ArrayList<JSONObject>> pokemonCardsData = new ArrayList<>();
+        ArrayList<JSONObject> communesData = new ArrayList<>();
+        ArrayList<JSONObject> raresData = new ArrayList<>();
+
+        pokemonCardsData.add(communesData);
+        pokemonCardsData.add(raresData);
+
+        // chaque carte est un string, on les transorme en objets JSON
+        ArrayList<String> communes = pokemonCardsSTR.get(0);
+        for (int i = 0; i<communes.size(); i++) {
+            json = new JSONObject(communes.get(i));
+            //on ne garde que l'image au format large
+            JSONObject image = (JSONObject) json.get("images");
+            json.put("images",image.get("large"));
+            pokemonCardsData.get(0).add(json);
+        }
+        ArrayList<String> rares = pokemonCardsSTR.get(1);
+        for (int i = 0; i<rares.size(); i++) {
+            json = new JSONObject(rares.get(i));
+            pokemonCardsData.get(1).add(json);
+        }
+        System.out.println("Pokemon cards data : " + pokemonCardsData);
+        model.addAttribute("pokemonCardsCommon", pokemonCardsData.get(0));
+        model.addAttribute("pokemonCardsRare", pokemonCardsData.get(1));
 
         return "mescartes";
     }

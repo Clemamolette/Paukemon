@@ -1,3 +1,4 @@
+/* affichage des cartes de personnalisation */
 .card-container {
     padding: 10px;
     display: flex;
@@ -47,4 +48,25 @@
     color: white;
     font-size: 18px;
     padding: 7px;
+}
+
+/* affichage des cartes pokemon*/
+.pokemon-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.pokemon-card {
+    border-radius: 5px;
+    width: 12em;
+    height: auto;
+    padding: 5px;
+    text-align: center;
+}
+
+.pokemon-card img {
+    max-width: 100%;
 }

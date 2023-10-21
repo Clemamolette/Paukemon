@@ -1,12 +1,14 @@
 package com.example.demo;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.mashape.unirest.http.*;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.util.*;
 
 @Service
 public class PokemonService {
@@ -19,6 +21,7 @@ public class PokemonService {
         HttpResponse<JsonNode> jsonResponse;
         {
             ArrayList<ArrayList<String>> data;
+            List<List<Pokemon>> pokemonList;
             try {
                 // première requête avec une extension de carte
                 jsonResponse = Unirest.get(apiURL1)
@@ -47,6 +50,7 @@ public class PokemonService {
                 // on regroupe les deux listes dans une même autre liste
                 data.add(communes);
                 data.add(rares);
+
 
             } catch (UnirestException e) {
                 throw new RuntimeException(e);

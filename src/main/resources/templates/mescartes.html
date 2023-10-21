@@ -1,45 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Mes cartes</title>
-    <link href="https://fonts.32tps://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap" rel="stylesheet">
-    <link href="https://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet">
-    <link rel="stylesheet" href="/resources/static/miseEnPage.css" />
-</head>
-<body>
-<header>
-    <div style="display:flex;flex-direction:row; justify-content:center; align-items:center;">
-        <div class="titre">Paukem</div>
-        <img id="fantominus" src="https://www.pokebip.com/pokedex/images/e_animees/092.gif" alt="Petit fantominus qui se cache">
-        <div class="titre">n</div>
-    </div>
-    <nav id="liens">
-        <a href="accueil">Accueil</a>
-        <a href="boosters">Boosters</a>
-        <a href="mescartes">Mes cartes</a>
-        <a href="personnalisation">Personnalisation</a>
-        <a href="">Nous contacter</a>
-    </nav>
-</header>
-<div w3-include-html="header.html"></div>
+    <head>
+        <meta charset="UTF-8">
+        <title>Mes cartes</title>
+        <link href="https://fonts.32tps://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap" rel="stylesheet">
+        <link href="https://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet">
+        <link rel="stylesheet" href="/resources/static/miseEnPage.css" />
+        <link rel="stylesheet" href="/resources/static/cartes.css" />
+    </head>
+    <body>
+        <header>
+            <div style="display:flex;flex-direction:row; justify-content:center; align-items:center;">
+                <div class="titre">Paukem</div>
+                <img id="fantominus" src="https://www.pokebip.com/pokedex/images/e_animees/092.gif" alt="Petit fantominus qui se cache">
+                <div class="titre">n</div>
+            </div>
+            <nav id="liens">
+                <a href="accueil">Accueil</a>
+                <a href="boosters">Boosters</a>
+                <a href="mescartes">Mes cartes</a>
+                <a href="personnalisation">Personnalisation</a>
+                <a href="">Nous contacter</a>
+            </nav>
+        </header>
+        <div w3-include-html="header.html"></div>
 
-<main style="width: 60%;">
-    <fieldset>
-        <p class="pres">Mes cartes </p>
-    </fieldset>
-    <p th:each="type : ${cards}" th:value="${type.data}">
-        <span th:text="${type.data}"></span>
-    </p>
-</main>
-<footer style="display:flex; flex-direction:column; align-items:center;">
-    <p id="copyright" style="margin:2px; opacity:70%; margin-top:20px; ">coucou</p>
-    <p style="margin:2px;opacity:70%;">©2023 Clémentine. Tous droits réservés.</p>
+        <main style="width: 70%;">
+            <h1>Mes cartes</h1>
 
+            <div class="pokemon-cards">
+                <th:block th:each="pokemon : ${pokemonCardsCommon}">
+                    <div class="pokemon-card">
 
+                        <h2 th:text="${pokemon.get('name')}"></h2>
+                        <img th:src="${pokemon.get('images')}" th:alt="${pokemon.get('name')}" />
+                        <p>Type: <span th:text="${pokemon.get('types')}" /></p>
+                        <p>HP: <span th:text="${pokemon.get('hp')}" /></p>
+                        <p>Rareté: <span th:text="${pokemon.get('rarity')}" /></p>
 
-</footer>
-</body>
+                    </div>
+                </th:block>
+            </div>
+
+        </main>
+
+        <footer style="display:flex; flex-direction:column; align-items:center;">
+            <p id="copyright" style="margin:2px; opacity:70%; margin-top:20px; ">coucou</p>
+            <p style="margin:2px;opacity:70%;">©2023 Clémentine. Tous droits réservés.</p>
+        </footer>
+    </body>
 </html>
+
