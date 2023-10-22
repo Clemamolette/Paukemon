@@ -32,15 +32,10 @@
 
             <div class="pokemon-cards">
                 <th:block th:each="pokemon : ${pokemonCardsCommon}">
-                    <div class="pokemon-card">
-
-                        <h2 th:text="${pokemon.get('name')}"></h2>
-                        <img th:src="${pokemon.get('images')}" th:alt="${pokemon.get('name')}" />
-                        <p>Type: <span th:text="${pokemon.get('types')}" /></p>
-                        <p>HP: <span th:text="${pokemon.get('hp')}" /></p>
-                        <p>Rareté: <span th:text="${pokemon.get('rarity')}" /></p>
-
-                    </div>
+                    <img class="pokemon-card" th:src="${pokemon.get('images')}" th:alt="${pokemon.get('name')}" />
+                </th:block>
+                <th:block th:each="pokemon : ${pokemonCardsRare}">
+                    <img class="pokemon-card" th:src="${pokemon.get('images')}" th:alt="${pokemon.get('name')}" />
                 </th:block>
             </div>
 

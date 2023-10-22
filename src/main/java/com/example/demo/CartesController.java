@@ -44,6 +44,8 @@ public class CartesController {
         ArrayList<String> rares = pokemonCardsSTR.get(1);
         for (int i = 0; i<rares.size(); i++) {
             json = new JSONObject(rares.get(i));
+            JSONObject image = (JSONObject) json.get("images");
+            json.put("images",image.get("large"));
             pokemonCardsData.get(1).add(json);
         }
         System.out.println("Pokemon cards data : " + pokemonCardsData);
