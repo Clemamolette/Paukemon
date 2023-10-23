@@ -15,7 +15,7 @@ public class PokemonService {
 
     private String apiURL1 = "https://api.pokemontcg.io/v2/cards?select=id,name,hp,types,nationalPokedexNumbers,images,rarity,supertype&q=set.id:bw1";
     private String apiURL2 = "https://api.pokemontcg.io/v2/cards?select=id,name,hp,types,nationalPokedexNumbers,images,rarity,supertype&q=set.id:bw2";
-    private String apiKEY = "";
+    private String apiKEY = "e030d28b-a210-4552-bec5-3b63be6b970b";
 
     public ArrayList<ArrayList<String>> getCards() {
         HttpResponse<JsonNode> jsonResponse;

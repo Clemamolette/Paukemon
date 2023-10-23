@@ -1,7 +1,7 @@
 .booster {
     cursor: pointer;
     border-radius: 10px;
-    height: 30vh;
+    height: 55vh;
     width: auto;
 }
 
@@ -9,7 +9,7 @@
 .card-container {
     padding: 10px;
     display: flex;
-    gap: 50px;
+    gap: 10vw;
     margin-bottom: 300px;
     z-index: 98;
 }
@@ -41,7 +41,7 @@
     margin-top: 20px;
 }
 .card-container .card .content {
-    padding: 15px 20px; 
+    padding: 15px 20px;
 }
 .card-container .card h3 {
     text-align: center;
@@ -68,7 +68,7 @@
 
 .pokemon-card {
     border-radius: 5px;
-    width: 12vh;
+    width: 30vh;
     height: auto;
 }
 
