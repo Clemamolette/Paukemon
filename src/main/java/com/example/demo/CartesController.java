@@ -22,11 +22,15 @@ public class CartesController {
     public String showCartes(Model model) {
 
         CartesSingleton cartesData = CartesSingleton.getInstance();
-        ArrayList<JSONObject> communes = cartesData.getCommunes();
-        ArrayList<JSONObject> rares = cartesData.getRares();
+        ArrayList<JSONObject> communesBW = cartesData.getCommunesBW();
+        ArrayList<JSONObject> raresBW = cartesData.getRaresBW();
+        ArrayList<JSONObject> communesBase = cartesData.getCommunesBase();
+        ArrayList<JSONObject> raresBase = cartesData.getRaresBase();
 
-        model.addAttribute("pokemonCardsCommon", communes);
-        model.addAttribute("pokemonCardsRare", rares);
+        model.addAttribute("pokemonCardsCommonBW", communesBW);
+        model.addAttribute("pokemonCardsRareBW", raresBW);
+        model.addAttribute("pokemonCardsCommonBase", communesBase);
+        model.addAttribute("pokemonCardsRareBase", raresBase);
 
         return "mescartes";
     }

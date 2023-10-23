@@ -30,15 +30,6 @@
         <main style="width: 70%;">
             <h1>Mes cartes</h1>
 
-            <div class="pokemon-cards">
-                <th:block th:each="pokemon : ${pokemonCardsCommon}">
-                    <img class="pokemon-card" th:src="${pokemon.get('images')}" th:alt="${pokemon.get('name')}" />
-                </th:block>
-                <th:block th:each="pokemon : ${pokemonCardsRare}">
-                    <img class="pokemon-card" th:src="${pokemon.get('images')}" th:alt="${pokemon.get('name')}" />
-                </th:block>
-            </div>
-
         </main>
 
         <footer style="display:flex; flex-direction:column; align-items:center;">

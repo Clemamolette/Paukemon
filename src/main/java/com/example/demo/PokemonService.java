@@ -13,8 +13,10 @@ import java.util.*;
 @Service
 public class PokemonService {
 
-    private String apiURL1 = "https://api.pokemontcg.io/v2/cards?select=id,name,hp,types,nationalPokedexNumbers,images,rarity,supertype&q=set.id:bw1";
-    private String apiURL2 = "https://api.pokemontcg.io/v2/cards?select=id,name,hp,types,nationalPokedexNumbers,images,rarity,supertype&q=set.id:bw2";
+    private String apiURLBW1 = "https://api.pokemontcg.io/v2/cards?select=id,name,hp,types,nationalPokedexNumbers,images,rarity,supertype&q=set.id:bw1";
+    private String apiURLBW2 = "https://api.pokemontcg.io/v2/cards?select=id,name,hp,types,nationalPokedexNumbers,images,rarity,supertype&q=set.id:bw2";
+    private String apiURLBase1 = "https://api.pokemontcg.io/v2/cards?select=id,name,hp,types,nationalPokedexNumbers,images,rarity,supertype&q=set.id:base1";
+    private String apiURLBase2 = "https://api.pokemontcg.io/v2/cards?select=id,name,hp,types,nationalPokedexNumbers,images,rarity,supertype&q=set.id:base2";
     private String apiKEY = "e030d28b-a210-4552-bec5-3b63be6b970b";
 
     public ArrayList<ArrayList<String>> getCards() {
@@ -24,32 +26,55 @@ public class PokemonService {
             List<List<Pokemon>> pokemonList;
             try {
                 // première requête avec une extension de carte
-                jsonResponse = Unirest.get(apiURL1)
+                jsonResponse = Unirest.get(apiURLBW1)
                         .header("X-Api-Key", apiKEY)
                         .asJson();
 
                 // création des tableaux pour contenir les cartes rares et communes
                 data = new ArrayList<>();
-                ArrayList<String> communes = new ArrayList<String>();
-                ArrayList<String> rares = new ArrayList<String>();
-
+                ArrayList<String> communesBW = new ArrayList<String>();
+                ArrayList<String> raresBW = new ArrayList<String>();
 
                 //récupération des données de la réponse et classement dans les deux tableaux selon la rareté
                 JSONArray data_json = (JSONArray) jsonResponse.getBody().getObject().get("data");
                 int len = data_json.length();
-                dispatchRarity(data_json, communes, rares, len);
+                dispatchRarity(data_json, communesBW, raresBW, len);
+
 
                 // Deuxième requête avec une autre extension de cartes
-                jsonResponse = Unirest.get(apiURL2)
+                jsonResponse = Unirest.get(apiURLBW2)
                         .header("X-Api-Key", apiKEY)
                         .asJson();
                 data_json = (JSONArray) jsonResponse.getBody().getObject().get("data");
                 len = data_json.length();
-                dispatchRarity(data_json, communes, rares, len);
+                dispatchRarity(data_json, communesBW, raresBW, len);
+
+
+                ArrayList<String> communesBase = new ArrayList<String>();
+                ArrayList<String> raresBase = new ArrayList<String>();
+                // Troisième requête
+                jsonResponse = Unirest.get(apiURLBase1)
+                        .header("X-Api-Key", apiKEY)
+                        .asJson();
+                data_json = (JSONArray) jsonResponse.getBody().getObject().get("data");
+                len = data_json.length();
+                dispatchRarity(data_json, communesBase, raresBase, len);
+
+
+                // Quatrième requête
+                jsonResponse = Unirest.get(apiURLBase2)
+                        .header("X-Api-Key", apiKEY)
+                        .asJson();
+                data_json = (JSONArray) jsonResponse.getBody().getObject().get("data");
+                len = data_json.length();
+                dispatchRarity(data_json, communesBase, raresBase, len);
+
 
                 // on regroupe les deux listes dans une même autre liste
-                data.add(communes);
-                data.add(rares);
+                data.add(communesBW);
+                data.add(raresBW);
+                data.add(communesBase);
+                data.add(raresBase);
 
 
             } catch (UnirestException e) {
