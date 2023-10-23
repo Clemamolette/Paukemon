@@ -70,7 +70,7 @@ public class PokemonService {
                 dispatchRarity(data_json, communesBase, raresBase, len);
 
 
-                // on regroupe les deux listes dans une même autre liste
+                // on regroupe les quatres listes dans une même autre liste
                 data.add(communesBW);
                 data.add(raresBW);
                 data.add(communesBase);

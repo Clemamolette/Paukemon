@@ -9,6 +9,7 @@
         <link href="https://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet">
         <link rel="stylesheet" href="/resources/static/miseEnPage.css" />
         <link rel="stylesheet" href="/resources/static/cartes.css" />
+        <link rel="stylesheet" href="/resources/static/opening.css" />
     </head>
     <body>
         <header>
@@ -25,10 +26,25 @@
                 <a href="">Nous contacter</a>
             </nav>
         </header>
-        <div w3-include-html="header.html"></div>
 
-        <main style="width: 70%;">
+        <main>
             <h1>Clique sur les cartes pour les retourner !</h1>
+
+            <div class="opening">
+                <img class="booster" style="align-self: center;margin-left: 5vw;" src="https://product-images.tcgplayer.com/98553.jpg"/>
+                <div class="card-opening">
+                    <div class="common-cards">
+                        <img th:src="${commune1.get('images')}" th:alt="${commune1.get('name')}" />
+                        <img th:src="${commune2.get('images')}" th:alt="${commune2.get('name')}" />
+                        <img th:src="${commune3.get('images')}" th:alt="${commune3.get('name')}" />
+                        <img th:src="${commune4.get('images')}" th:alt="${commune4.get('name')}" />
+                    </div>
+                    <div class="rare-card">
+                        <img th:src="${rare.get('images')}" th:alt="${rare.get('name')}" />
+                    </div>
+                </div>
+            </div>
+
         </main>
 
 

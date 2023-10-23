@@ -23,6 +23,7 @@ public class CartesSingleton {
 
         JSONObject json;
         // chaque carte est un string, on les transorme en objets JSON
+
         ArrayList<String> communesBWSTR = pokemonCardsSTR.get(0);
         for (int i = 0; i<communesBWSTR.size(); i++) {
             json = new JSONObject(communesBWSTR.get(i));
@@ -46,7 +47,7 @@ public class CartesSingleton {
             //on ne garde que l'image au format large
             JSONObject image = (JSONObject) json.get("images");
             json.put("images",image.get("large"));
-            communesBWData.add(json);
+            communesBaseData.add(json);
         }
 
         ArrayList<String> raresBaseSTR = pokemonCardsSTR.get(3);
@@ -54,7 +55,7 @@ public class CartesSingleton {
             json = new JSONObject(raresBaseSTR.get(i));
             JSONObject image = (JSONObject) json.get("images");
             json.put("images",image.get("large"));
-            raresBWData.add(json);
+            raresBaseData.add(json);
         }
     }
 

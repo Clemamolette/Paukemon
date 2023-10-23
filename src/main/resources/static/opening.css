@@ -1,0 +1,32 @@
+.opening {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.card-opening {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 2vw;
+    margin-left: 10vw;
+}
+
+.common-cards {
+    display: flex;
+    flex-wrap: wrap;
+    width: 60%;
+    gap: 2vw;
+}
+.common-cards img {
+    height: 45vh;
+    width: auto;
+}
+
+.rare-card {
+    align-self: center;
+}
+
+.rare-card img {
+    height: 45vh;
+    width: auto;
+}
