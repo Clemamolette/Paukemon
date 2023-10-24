@@ -31,16 +31,31 @@
             <h1>Clique sur les cartes pour les retourner !</h1>
 
             <div class="opening">
-                <img class="booster" style="align-self: center;margin-left: 5vw;" src="https://product-images.tcgplayer.com/98553.jpg"/>
+                <img class="booster" style="align-self: center;margin-left: 5vw;" src="/resources/static/base_booster.webp"/>
                 <div class="card-opening">
                     <div class="common-cards">
-                        <img th:src="${commune1.get('images')}" th:alt="${commune1.get('name')}" />
-                        <img th:src="${commune2.get('images')}" th:alt="${commune2.get('name')}" />
-                        <img th:src="${commune3.get('images')}" th:alt="${commune3.get('name')}" />
-                        <img th:src="${commune4.get('images')}" th:alt="${commune4.get('name')}" />
+                        <div class="card" id="commune1">
+                            <img src="/resources/static/card_back.png" alt="Dos de carte" />
+                            <img th:src="${commune1.get('images')}" th:alt="${commune1.get('name')}" />
+                        </div>
+                        <div class="card" id="commune2">
+                            <img src="/resources/static/card_back.png" alt="Dos de carte" />
+                            <img th:src="${commune2.get('images')}" th:alt="${commune2.get('name')}" />
+                        </div>
+                        <div class="card" id="commune3">
+                            <img src="/resources/static/card_back.png" alt="Dos de carte" />
+                            <img th:src="${commune3.get('images')}" th:alt="${commune3.get('name')}" />
+                        </div>
+                        <div class="card" id="commune4">
+                            <img src="/resources/static/card_back.png" alt="Dos de carte" />
+                            <img th:src="${commune4.get('images')}" th:alt="${commune4.get('name')}" />
+                        </div>
                     </div>
                     <div class="rare-card">
-                        <img th:src="${rare.get('images')}" th:alt="${rare.get('name')}" />
+                        <div class="card card-holo" id="rare">
+                            <img src="/resources/static/card_back.png" alt="Dos de carte" />
+                            <img th:src="${rare.get('images')}" th:alt="${rare.get('name')}" />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -54,3 +69,21 @@
         </footer>
     </body>
 </html>
+
+<script>
+    const cards = document.querySelectorAll('.card');
+
+    cards.forEach(card => {
+        card.addEventListener('click', async () => {
+            card.classList.add('flipped');
+            let cardId = card.id;
+
+            if (cardId === "rare") {
+                await new Promise(r => setTimeout(r, 400));
+                card.classList.add('glow');
+            }
+            card.removeEventListener('click', () => {
+            });
+        });
+    });
+</script>

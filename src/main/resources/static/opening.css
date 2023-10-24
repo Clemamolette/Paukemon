@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    align-items: center;
 }
 
 .card-opening {
@@ -17,16 +18,72 @@
     width: 60%;
     gap: 2vw;
 }
-.common-cards img {
+
+.common-cards .card,
+.rare-card .card {
+    width: 15vw;
     height: 45vh;
-    width: auto;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.common-cards .card img,
+.rare-card .card img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 10px;
+    backface-visibility: hidden;
+    transition: transform 0.5s;
 }
 
 .rare-card {
     align-self: center;
 }
 
-.rare-card img {
-    height: 45vh;
-    width: auto;
+
+/* ANIMATIONS */
+.common-cards .card img:last-child,
+.rare-card .card img:last-child {
+    transform: rotateY(180deg);
 }
+
+.common-cards .card.flipped img:first-child,
+.rare-card .card.flipped img:first-child {
+    transform: rotateY(180deg);
+}
+
+.common-cards .card.flipped img:last-child,
+.rare-card .card.flipped img:last-child {
+    transform: rotateY(0);
+}
+
+.flipped {
+    position: relative;
+}
+.flipped img {
+    z-index: 1;
+}
+
+
+
+/* HOLOGRAPHIQUE */
+
+.glow::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 90%;
+    height: 90%;
+    background: url("https://assets.codepen.io/13471/sparkles.gif") center/cover no-repeat,
+    url("https://assets.codepen.io/13471/holo.png") center/cover no-repeat,
+    linear-gradient(125deg, rgba(234, 123, 181, 0.66) 15%, rgba(75, 162, 255, 0.58) 30%, rgba(243, 243, 163, 0.7) 40%, rgba(133, 236, 190, 0.81) 60%, #00cfff40 70%, #cc4cfa50 85%);    z-index: 2;
+    /* opacity: 0.5; */
+    mix-blend-mode: lighten;
+    border-radius: 20px;
+}
+
+
+
+
