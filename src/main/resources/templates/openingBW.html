@@ -82,6 +82,7 @@
             if (cardId === "rare") {
                 await new Promise(r => setTimeout(r, 400));
                 card.classList.add('glow');
+                card.classList.add('paillette');
             }
             card.removeEventListener('click', () => {
             });
