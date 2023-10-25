@@ -29,7 +29,12 @@
 
         <main style="width: 70%;">
             <h1>Mes cartes</h1>
-
+            <div class="mesCartes">
+                <div class="maCarte" th:each="carte : ${mesCartes}">
+                    <img class="pokemon-card" th:src="${carte.getImages()}" th:alt="${carte.getName()}" />
+                    <p>Quantité : <span th:text="${carte.getQuantity()}" /></p>
+                </div>
+            </div>
         </main>
 
         <footer style="display:flex; flex-direction:column; align-items:center;">

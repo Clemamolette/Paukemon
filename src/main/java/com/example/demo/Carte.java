@@ -15,7 +15,9 @@ public class Carte {
     @Column
     private String rarity;
     @Column
-    private String image;
+    private String images;
+    @Column
+    private Integer quantity;
 
 
     public String getId() {
@@ -48,10 +50,16 @@ public class Carte {
     public void setRarity(String rarity) {
         this.rarity = rarity;
     }
-    public String getImage() {
-        return image;
+    public String getImages() {
+        return images;
     }
-    public void setImage(String image) {
-        this.image = image;
+    public void setImages(String images) {
+        this.images = images;
+    }
+    public Integer getQuantity() {
+        return quantity;
+    }
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 }

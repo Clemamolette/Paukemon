@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +11,9 @@ import java.util.List;
 
 @Controller
 public class BWOpeningController {
+
+    @Autowired
+    MesCartesRepository mesCartesRepo;
 
     @GetMapping("/openingBW")
     public String showOpeningBW(Model model) {
@@ -41,6 +45,11 @@ public class BWOpeningController {
         model.addAttribute("commune4", communesBW.get(communes.get(3)));
         model.addAttribute("rare", raresBW.get(rare));
 
+        saveCarte(communesBW.get(communes.get(0)));
+        saveCarte(communesBW.get(communes.get(1)));
+        saveCarte(communesBW.get(communes.get(2)));
+        saveCarte(communesBW.get(communes.get(3)));
+        saveCarte(raresBW.get(rare));
 
         return "openingBW";
     }
@@ -48,5 +57,21 @@ public class BWOpeningController {
     public int getRandomNumber(int min, int max) {
         return (int) ((Math.random() * (max - min)) + min);
     }
+    public void saveCarte(JSONObject carte) {
+        String id = carte.get("id").toString();
+        if (mesCartesRepo.findIDS().contains(id)) { // on ajoute 1 à la quantité de cette carte possédée
+            mesCartesRepo.updateQuantityById(id, mesCartesRepo.findQuantityByID(id)+1);
+        } else {  // ou on créer cette nouvelle carte dans nos possessions
+            Carte c = new Carte();
+            c.setId(id);
+            c.setName(carte.get("name").toString());
+            c.setImages(carte.get("images").toString());
+            c.setHp(carte.get("hp").toString());
+            c.setRarity(carte.get("rarity").toString());
+            c.setType(carte.get("types").toString().substring(2,carte.get("types").toString().length()-2));
+            c.setQuantity(1);
 
+            mesCartesRepo.save(c);
+        }
+    }
 }

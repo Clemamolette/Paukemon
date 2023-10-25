@@ -22,7 +22,7 @@
 .common-cards .card,
 .rare-card .card {
     width: 15vw;
-    height: 45vh;
+    height: 21vw;
     perspective: 1000px;
     cursor: pointer;
 }

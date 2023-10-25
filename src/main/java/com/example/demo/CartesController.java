@@ -18,19 +18,16 @@ public class CartesController {
     @Autowired
     private PokemonService pokemonService;
 
+    @Autowired
+    private MesCartesRepository mesCartesRepo;
+
     @GetMapping("/mescartes")
     public String showCartes(Model model) {
 
-        CartesSingleton cartesData = CartesSingleton.getInstance();
-        ArrayList<JSONObject> communesBW = cartesData.getCommunesBW();
-        ArrayList<JSONObject> raresBW = cartesData.getRaresBW();
-        ArrayList<JSONObject> communesBase = cartesData.getCommunesBase();
-        ArrayList<JSONObject> raresBase = cartesData.getRaresBase();
+        List<Carte> mesCartes = mesCartesRepo.findAll();
 
-        model.addAttribute("pokemonCardsCommonBW", communesBW);
-        model.addAttribute("pokemonCardsRareBW", raresBW);
-        model.addAttribute("pokemonCardsCommonBase", communesBase);
-        model.addAttribute("pokemonCardsRareBase", raresBase);
+        model.addAttribute("mesCartes", mesCartes);
+
 
         return "mescartes";
     }
