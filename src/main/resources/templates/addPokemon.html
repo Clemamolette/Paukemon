@@ -8,6 +8,7 @@
 		<link href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap" rel="stylesheet">
 		<link href="https://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet">
 		<link rel="stylesheet" href="/resources/static/miseEnPage.css" />
+		<link rel="stylesheet" href="/resources/static/opening.css" />
 	</head>
 	<body>
 		<header>
@@ -26,8 +27,13 @@
 		</header>
 		<div w3-include-html="header.html"></div>
 
-		<main style="width: 60%;">
-			<h1>Ajouter un nouveau pokemon :</h1>
+		<main>
+			<div class="top-panel">
+				<div class="back-button">
+					<a href="personnalisation" class="fleche"></a>
+				</div>
+				<h1 style="margin-left: 30vw;">Ajouter un nouveau Pokemon :</h1>
+			</div>
 			<form action="/addPokemon" method="POST">
 				<label for="nom">Nom :</label>
 				<input id="nom" name="nom">

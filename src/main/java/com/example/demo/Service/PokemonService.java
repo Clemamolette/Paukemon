@@ -1,7 +1,6 @@
-package com.example.demo;
+package com.example.demo.Service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
+import com.example.demo.Model.Pokemon;
 import com.mashape.unirest.http.*;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.json.JSONArray;
@@ -36,6 +35,7 @@ public class PokemonService {
                 ArrayList<String> raresBW = new ArrayList<String>();
 
                 //récupération des données de la réponse et classement dans les deux tableaux selon la rareté
+
                 JSONArray data_json = (JSONArray) jsonResponse.getBody().getObject().get("data");
                 int len = data_json.length();
                 dispatchRarity(data_json, communesBW, raresBW, len);

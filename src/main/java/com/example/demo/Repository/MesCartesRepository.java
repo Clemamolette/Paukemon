@@ -1,6 +1,7 @@
-package com.example.demo;
+package com.example.demo.Repository;
 
-import jakarta.persistence.criteria.CriteriaBuilder;
+import com.example.demo.Model.Carte;
+import com.example.demo.Model.Pokemon;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;

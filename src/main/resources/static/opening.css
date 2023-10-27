@@ -5,11 +5,47 @@
     align-items: center;
 }
 
+.top-panel {
+    display: flex;
+    flex-direction: row;
+    width: -moz-available;
+}
+
+.left-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 5vw;
+    gap: 5vh;
+    align-self: flex-start;
+    margin-top: 8vh;
+}
+
+.right-panel {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: flex-start;
+    margin-top: 20vh;
+    gap: 5vh;
+}
+
+
 .card-opening {
     display: flex;
     flex-direction: row;
     margin-bottom: 2vw;
-    margin-left: 10vw;
+    margin-left: 11.5vw;
+}
+
+button {
+    padding: 1.5vh;
+    background-color: rebeccapurple;
+    color: white;
+    font-size: 1em;
+    font-family: 'Minecraftia', sans-serif !important;
+    border-radius: 10px;
+    border: none;
 }
 
 .common-cards {

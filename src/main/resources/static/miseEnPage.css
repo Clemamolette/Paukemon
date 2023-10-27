@@ -81,3 +81,20 @@ fieldset {
     height: 100px;
     width: auto;
 }
+
+.back-button {
+    width: 53px;
+    align-self: flex-start;
+    margin-left: 2vw;
+    margin-top: 2vh;
+}
+
+.fleche{
+    padding: 15px;
+    border: solid black;
+    border-width: 0 5px 5px 0;
+    border-radius: 5px;
+    display: inline-block;
+    transform: rotate(90deg);
+    -webkit-transform: rotate(135deg);
+}

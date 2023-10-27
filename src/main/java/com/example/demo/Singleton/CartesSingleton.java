@@ -1,5 +1,6 @@
-package com.example.demo;
+package com.example.demo.Singleton;
 
+import com.example.demo.Service.PokemonService;
 import org.json.JSONObject;
 
 import java.util.*;
@@ -81,5 +82,7 @@ public class CartesSingleton {
     public ArrayList<JSONObject> getRaresBase() {
         return raresBaseData;
     }
+
+
 }
 

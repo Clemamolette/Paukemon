@@ -7,6 +7,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap" rel="stylesheet">
         <link href="https://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet">
+        <link href="https://fonts.cdnfonts.com/css/minecraftia" rel="stylesheet">
         <link rel="stylesheet" href="/resources/static/miseEnPage.css" />
         <link rel="stylesheet" href="/resources/static/cartes.css" />
         <link rel="stylesheet" href="/resources/static/opening.css" />
@@ -28,11 +29,20 @@
         </header>
 
         <main>
-            <h1>Clique sur les cartes pour les retourner !</h1>
+            <div class="top-panel">
+                <div class="back-button">
+                    <a href="boosters" class="fleche"></a>
+                </div>
+                <button class="centrer" style="align-self: center; margin-left: 36vw;">Centrer les cartes</button>
+            </div>
+
+            <h1 style="margin-bottom: 2vh;">Clique sur les cartes pour les retourner !</h1>
 
             <div class="opening">
-                <img class="booster" style="align-self: center;margin-left: 5vw;" src="/resources/static/base_booster.webp"/>
-                <div class="card-opening">
+                <a href="openingBase">
+                    <img class="booster" style="margin-left: 5vw;" src="/resources/static/base_booster.webp"/>
+                </a>
+                <div class="card-opening" style="margin-left: 10.5vw">
                     <div class="common-cards">
                         <div class="card" id="commune1">
                             <img src="/resources/static/card_back.png" alt="Dos de carte" />
@@ -51,11 +61,14 @@
                             <img th:src="${commune4.get('images')}" th:alt="${commune4.get('name')}" />
                         </div>
                     </div>
-                    <div class="rare-card">
-                        <div class="card card-holo" id="rare">
-                            <img src="/resources/static/card_back.png" alt="Dos de carte" />
-                            <img th:src="${rare.get('images')}" th:alt="${rare.get('name')}" />
+                    <div class="right-panel">
+                        <div class="rare-card">
+                            <div class="card card-holo" id="rare">
+                                <img src="/resources/static/card_back.png" alt="Dos de carte" />
+                                <img th:src="${rare.get('images')}" th:alt="${rare.get('name')}" />
+                            </div>
                         </div>
+                        <button class="ouvrirEncore" style="align-self: center;">Ouvrir un autre booster !</button>
                     </div>
                 </div>
             </div>
@@ -79,7 +92,7 @@
             let cardId = card.id;
 
             if (cardId === "rare") {
-                await new Promise(r => setTimeout(r, 380));
+                await new Promise(r => setTimeout(r, 390));
                 card.classList.add('glow');
                 card.classList.add('paillette');
             }

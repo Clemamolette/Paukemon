@@ -11,6 +11,9 @@
     display: flex;
     gap: 10vw;
     z-index: 98;
+    height: 46vh;
+    flex-direction: row;
+    align-items: center;
 }
 
 .card-container .card {
@@ -26,6 +29,7 @@
     align-items: center;
     display: flex;
     flex-direction: column;
+    height: 25vh;
 }
 .card-container .card:hover {
     transform: scale(1.025);
