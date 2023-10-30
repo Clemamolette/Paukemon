@@ -1,6 +1,7 @@
 package com.example.demo.Model;
 
 import jakarta.persistence.*;
+import org.springframework.beans.factory.annotation.Value;
 
 @Entity
 public class Carte {
@@ -18,6 +19,8 @@ public class Carte {
     private String images;
     @Column
     private Integer quantity;
+    @Column
+    private boolean acquired;
 
 
     public String getId() {
@@ -61,5 +64,11 @@ public class Carte {
     }
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
+    }
+    public boolean isAcquired() {
+        return acquired;
+    }
+    public void setAcquired(boolean acquired) {
+        this.acquired = acquired;
     }
 }

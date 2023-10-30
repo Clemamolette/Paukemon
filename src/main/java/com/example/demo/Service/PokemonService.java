@@ -1,5 +1,6 @@
 package com.example.demo.Service;
 
+import com.example.demo.Model.Carte;
 import com.example.demo.Model.Pokemon;
 import com.mashape.unirest.http.*;
 import com.mashape.unirest.http.exceptions.UnirestException;
@@ -35,38 +36,32 @@ public class PokemonService {
             // chaque carte est un string, on les transforme en objets JSON
 
             ArrayList<String> communesBWSTR = data.get(0);
-            for (int i = 0; i<communesBWSTR.size(); i++) {
-                json = new JSONObject(communesBWSTR.get(i));
-                JSONObject image = (JSONObject) json.get("images");
-                json.put("images",image.get("large"));
-                communesBWData.add(json);
-            }
+            formatage(communesBWSTR, communesBWData);
+            addToDataBase(communesBWData);
 
             ArrayList<String> raresBWSTR = data.get(1);
-            for (int i = 0; i<raresBWSTR.size(); i++) {
-                json = new JSONObject(raresBWSTR.get(i));
-                JSONObject image = (JSONObject) json.get("images");
-                json.put("images",image.get("large"));
-                raresBWData.add(json);
-            }
+            formatage(raresBWSTR, raresBWData);
+            addToDataBase(raresBWData);
 
             ArrayList<String> communesBaseSTR = data.get(2);
-            for (int i = 0; i<communesBaseSTR.size(); i++) {
-                json = new JSONObject(communesBaseSTR.get(i));
-                JSONObject image = (JSONObject) json.get("images");
-                json.put("images",image.get("large"));
-                communesBaseData.add(json);
-            }
+            formatage(communesBaseSTR, communesBaseData);
+            addToDataBase(communesBaseData);
 
             ArrayList<String> raresBaseSTR = data.get(3);
-            for (int i = 0; i<raresBaseSTR.size(); i++) {
-                json = new JSONObject(raresBaseSTR.get(i));
-                JSONObject image = (JSONObject) json.get("images");
-                json.put("images",image.get("large"));
-                raresBaseData.add(json);
-            }
+            formatage(raresBaseSTR, raresBaseData);
+            addToDataBase(raresBaseData);
 
             initialized = true;
+        }
+    }
+
+    private void formatage(ArrayList<String> serieSTR, ArrayList<JSONObject> serieData) {
+        JSONObject json;
+        for (int i = 0; i<serieSTR.size(); i++) {
+            json = new JSONObject(serieSTR.get(i));
+            JSONObject image = (JSONObject) json.get("images");
+            json.put("images",image.get("large"));
+            serieData.add(json);
         }
     }
 
@@ -130,6 +125,20 @@ public class PokemonService {
                 throw new RuntimeException(e);
             }
             return data;
+        }
+    }
+
+    private void addToDataBase(ArrayList<JSONObject> data) {
+        Carte c = new Carte();
+        for (JSONObject carte : data) {
+            c.setId(carte.get("id").toString());
+            c.setHp(carte.get("hp").toString());
+            c.setName(carte.get("name").toString());
+            c.setImages(carte.get("images").toString());
+            c.setRarity(carte.get("rarity").toString());
+            c.setQuantity(0);
+            c.setType(carte.get("types").toString());
+            c.setAcquired(false);
         }
     }
 

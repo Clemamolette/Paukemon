@@ -41,7 +41,6 @@ public class BaseOpeningController {
         }
         rare = getRandomNumber(0, taille_rares);
 
-
         model.addAttribute("commune1", communesBase.get(communes.get(0)));
         model.addAttribute("commune2", communesBase.get(communes.get(1)));
         model.addAttribute("commune3", communesBase.get(communes.get(2)));
@@ -74,6 +73,7 @@ public class BaseOpeningController {
             c.setRarity(carte.get("rarity").toString());
             c.setType(carte.get("types").toString().substring(2, carte.get("types").toString().length() - 2));
             c.setQuantity(1);
+            c.setAcquired(true);
 
             mesCartesRepo.save(c);
         }
