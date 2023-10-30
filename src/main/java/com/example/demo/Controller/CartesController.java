@@ -1,4 +1,4 @@
-package com.example.demo.Controler;
+package com.example.demo.Controller;
 
 import java.util.*;
 

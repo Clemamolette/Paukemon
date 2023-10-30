@@ -5,11 +5,13 @@ import com.mashape.unirest.http.*;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.annotation.SessionScope;
 
 import java.util.*;
 
-@Service
+@Service @SessionScope
 public class PokemonService {
 
     private String apiURLBW1 = "https://api.pokemontcg.io/v2/cards?select=id,name,hp,types,nationalPokedexNumbers,images,rarity,supertype&q=set.id:bw1";
@@ -17,6 +19,56 @@ public class PokemonService {
     private String apiURLBase1 = "https://api.pokemontcg.io/v2/cards?select=id,name,hp,types,nationalPokedexNumbers,images,rarity,supertype&q=set.id:base1";
     private String apiURLBase2 = "https://api.pokemontcg.io/v2/cards?select=id,name,hp,types,nationalPokedexNumbers,images,rarity,supertype&q=set.id:base2";
     private String apiKEY = "e030d28b-a210-4552-bec5-3b63be6b970b";
+    private ArrayList<ArrayList<String>> data;
+
+    protected boolean initialized = false;
+    protected ArrayList<JSONObject> communesBWData = new ArrayList<>();
+    protected ArrayList<JSONObject> raresBWData = new ArrayList<>();
+    protected ArrayList<JSONObject> communesBaseData = new ArrayList<>();
+    protected ArrayList<JSONObject> raresBaseData = new ArrayList<>();
+
+    public void initialize() {
+        if (!(initialized)) {
+            data = getCards();
+
+            JSONObject json;
+            // chaque carte est un string, on les transforme en objets JSON
+
+            ArrayList<String> communesBWSTR = data.get(0);
+            for (int i = 0; i<communesBWSTR.size(); i++) {
+                json = new JSONObject(communesBWSTR.get(i));
+                JSONObject image = (JSONObject) json.get("images");
+                json.put("images",image.get("large"));
+                communesBWData.add(json);
+            }
+
+            ArrayList<String> raresBWSTR = data.get(1);
+            for (int i = 0; i<raresBWSTR.size(); i++) {
+                json = new JSONObject(raresBWSTR.get(i));
+                JSONObject image = (JSONObject) json.get("images");
+                json.put("images",image.get("large"));
+                raresBWData.add(json);
+            }
+
+            ArrayList<String> communesBaseSTR = data.get(2);
+            for (int i = 0; i<communesBaseSTR.size(); i++) {
+                json = new JSONObject(communesBaseSTR.get(i));
+                JSONObject image = (JSONObject) json.get("images");
+                json.put("images",image.get("large"));
+                communesBaseData.add(json);
+            }
+
+            ArrayList<String> raresBaseSTR = data.get(3);
+            for (int i = 0; i<raresBaseSTR.size(); i++) {
+                json = new JSONObject(raresBaseSTR.get(i));
+                JSONObject image = (JSONObject) json.get("images");
+                json.put("images",image.get("large"));
+                raresBaseData.add(json);
+            }
+
+            initialized = true;
+        }
+    }
 
     public ArrayList<ArrayList<String>> getCards() {
         HttpResponse<JsonNode> jsonResponse;
@@ -35,7 +87,6 @@ public class PokemonService {
                 ArrayList<String> raresBW = new ArrayList<String>();
 
                 //récupération des données de la réponse et classement dans les deux tableaux selon la rareté
-
                 JSONArray data_json = (JSONArray) jsonResponse.getBody().getObject().get("data");
                 int len = data_json.length();
                 dispatchRarity(data_json, communesBW, raresBW, len);
@@ -75,8 +126,6 @@ public class PokemonService {
                 data.add(raresBW);
                 data.add(communesBase);
                 data.add(raresBase);
-
-
             } catch (UnirestException e) {
                 throw new RuntimeException(e);
             }
@@ -95,5 +144,24 @@ public class PokemonService {
                 }
             }
         }
+    }
+    public ArrayList<JSONObject> getCommunesBW() {
+        initialize();
+        return communesBWData;
+    }
+
+    public ArrayList<JSONObject> getRaresBW() {
+        initialize();
+        return raresBWData;
+    }
+
+    public ArrayList<JSONObject> getCommunesBase() {
+        initialize();
+        return communesBaseData;
+    }
+
+    public ArrayList<JSONObject> getRaresBase() {
+        initialize();
+        return raresBaseData;
     }
 }

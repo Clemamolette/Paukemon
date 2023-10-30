@@ -1,7 +1,7 @@
-package com.example.demo.Controler;
+package com.example.demo.Controller;
 
 import com.example.demo.Model.Carte;
-import com.example.demo.Singleton.CartesSingleton;
+import com.example.demo.Service.PokemonService;
 import com.example.demo.Repository.MesCartesRepository;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +17,14 @@ public class BWOpeningController {
     @Autowired
     MesCartesRepository mesCartesRepo;
 
+    @Autowired
+    PokemonService cartesData;
+
     @GetMapping("/openingBW")
     public String showOpeningBW(Model model) {
 
-        CartesSingleton cartesData = CartesSingleton.getInstance();
         ArrayList<JSONObject> communesBW = cartesData.getCommunesBW();
         ArrayList<JSONObject> raresBW = cartesData.getRaresBW();
-
 
         int taille_communes = communesBW.size();
         int taille_rares = raresBW.size();

@@ -1,16 +1,19 @@
-package com.example.demo.Controler;
+package com.example.demo.Controller;
 
 
-import com.example.demo.Singleton.CartesSingleton;
+import com.example.demo.Service.PokemonService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class AccueilController {
+    @Autowired
+    PokemonService cartesData;
     @GetMapping("/accueil")
     public String showAccueil(Model model) {
-        CartesSingleton cartesData = CartesSingleton.getInstance();
+        cartesData.initialize();
         return "accueil";
     }
 }
