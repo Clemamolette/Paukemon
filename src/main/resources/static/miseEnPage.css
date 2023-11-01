@@ -98,3 +98,24 @@ fieldset {
     transform: rotate(90deg);
     -webkit-transform: rotate(135deg);
 }
+.error, .success, .warning {
+    padding: 10px;
+    border-radius: 10px;
+    position: fixed;
+    display: block;
+}
+.error {
+    background-color: salmon;
+    border: solid red 2px;
+}
+.success {
+    background-color: lightgreen;
+    border: solid green 2px;
+}
+.warning {
+    background-color: sandybrown;
+    border: solid darkorange 2px;
+}
+.invisible {
+    display: none;
+}

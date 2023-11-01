@@ -29,13 +29,27 @@ public class addCarteController {
     }
 
     @PostMapping("/addCarte")
-    public String addCarte(@ModelAttribute Carte carte) {
+    public String addCarte(@ModelAttribute Carte carte, Model model) {
+
+        // vérifier si tous les champs sont remplis
+        if (areFieldsEmpty(carte)) {
+            model.addAttribute("failMessage", "Veuillez remplir tous les champs.");
+            List<Type> types = typeRepo.findAll();
+            model.addAttribute("types", types);
+            return "addCarte";
+        }
+
         int next_size = mesCartesRepo.findAll().size() + 1;
         String id = carte.getSerie() + next_size;
         carte.setId(id);
 
         mesCartesRepo.save(carte);
+        model.addAttribute("successMessage", "La carte a été ajoutée avec succès !");
 
-        return "redirect:/addCarte";
+        return "addCarte";
+    }
+
+    private boolean areFieldsEmpty(Carte carte) {
+        return carte.getName().isEmpty() || carte.getHp().isEmpty() || carte.getType().isEmpty() || carte.getRarity().isEmpty() || carte.getImages().isEmpty() || carte.getSerie().isEmpty();
     }
 }

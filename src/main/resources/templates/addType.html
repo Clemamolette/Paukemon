@@ -28,6 +28,15 @@
 <div w3-include-html="header.html"></div>
 
 <main style="height: 48vh;">
+	<div th:class="${#strings.isEmpty(failMessage)} ? 'invisible' : 'error'">
+		<p th:text="${failMessage}"></p>
+	</div>
+	<div th:class="${#strings.isEmpty(warningMessage)} ? 'invisible' : 'warning'">
+		<p th:text="${warningMessage}"></p>
+	</div>
+	<div th:class="${#strings.isEmpty(successMessage)} ? 'invisible' : 'success'">
+		<p th:text="${successMessage}"></p>
+	</div>
 	<div class="top-panel">
 		<div class="back-button">
 			<a href="personnalisation" class="fleche"></a>

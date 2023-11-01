@@ -1,7 +1,9 @@
 package com.example.demo.Service;
 
 import com.example.demo.Model.Carte;
+import com.example.demo.Model.Type;
 import com.example.demo.Repository.MesCartesRepository;
+import com.example.demo.Repository.TypeRepository;
 import com.mashape.unirest.http.*;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.json.JSONArray;
@@ -30,6 +32,8 @@ public class PokemonService {
 
     @Autowired
     MesCartesRepository mesCartesRepo;
+    @Autowired
+    TypeRepository typeRepo;
 
     public ArrayList<ArrayList<String>> getCards() {
         mesCartesRepo.deleteAll();
@@ -116,7 +120,7 @@ public class PokemonService {
             c.setName(carte.get("name").toString());
             c.setImages(carte.get("images").toString());
             c.setRarity(carte.get("rarity").toString());
-            c.setType(carte.get("types").toString());
+            c.setType(carte.get("types").toString().replace("[\"", "").replace("\"]", ""));
             if (carte.get("id").toString().startsWith("bw")) {
                 c.setSerie("bw");
             } else {
@@ -161,6 +165,15 @@ public class PokemonService {
             ArrayList<String> raresBaseSTR = data.get(3);
             formatage(raresBaseSTR, raresBaseData);
             addToDataBase(raresBaseData);
+
+            typeRepo.deleteAll();
+            ArrayList<String> types = mesCartesRepo.getTypes();
+            Type t;
+            for (String type : types) {
+                t = new Type();
+                t.setNom(type);
+                typeRepo.save(t);
+            }
 
             initialized = true;
         }

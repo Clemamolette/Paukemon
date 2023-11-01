@@ -22,6 +22,8 @@ public interface MesCartesRepository extends JpaRepository<Carte, String>{
     Boolean findAcquiredByID(
             @Param("id") String id
     );
+    @Query("SELECT DISTINCT c.type FROM Carte c")
+    ArrayList<String> getTypes();
     @Query("SELECT c FROM Carte c WHERE c.serie = :serie AND c.rarity = :rarity")
     ArrayList<Carte> findCartesByRarityAndSet(
             @Param("rarity") String rarity,
