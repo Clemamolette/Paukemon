@@ -2,6 +2,7 @@ package com.example.demo.Service;
 
 import com.example.demo.Model.Carte;
 import com.example.demo.Model.Pokemon;
+import com.example.demo.Repository.MesCartesRepository;
 import com.mashape.unirest.http.*;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.json.JSONArray;
@@ -28,44 +29,11 @@ public class PokemonService {
     protected ArrayList<JSONObject> communesBaseData = new ArrayList<>();
     protected ArrayList<JSONObject> raresBaseData = new ArrayList<>();
 
-    public void initialize() {
-        if (!(initialized)) {
-            data = getCards();
-
-            JSONObject json;
-            // chaque carte est un string, on les transforme en objets JSON
-
-            ArrayList<String> communesBWSTR = data.get(0);
-            formatage(communesBWSTR, communesBWData);
-            addToDataBase(communesBWData);
-
-            ArrayList<String> raresBWSTR = data.get(1);
-            formatage(raresBWSTR, raresBWData);
-            addToDataBase(raresBWData);
-
-            ArrayList<String> communesBaseSTR = data.get(2);
-            formatage(communesBaseSTR, communesBaseData);
-            addToDataBase(communesBaseData);
-
-            ArrayList<String> raresBaseSTR = data.get(3);
-            formatage(raresBaseSTR, raresBaseData);
-            addToDataBase(raresBaseData);
-
-            initialized = true;
-        }
-    }
-
-    private void formatage(ArrayList<String> serieSTR, ArrayList<JSONObject> serieData) {
-        JSONObject json;
-        for (int i = 0; i<serieSTR.size(); i++) {
-            json = new JSONObject(serieSTR.get(i));
-            JSONObject image = (JSONObject) json.get("images");
-            json.put("images",image.get("large"));
-            serieData.add(json);
-        }
-    }
+    @Autowired
+    MesCartesRepository mesCartesRepo;
 
     public ArrayList<ArrayList<String>> getCards() {
+        System.out.println("getting cards ...");
         HttpResponse<JsonNode> jsonResponse;
         {
             ArrayList<ArrayList<String>> data;
@@ -124,7 +92,22 @@ public class PokemonService {
             } catch (UnirestException e) {
                 throw new RuntimeException(e);
             }
+            System.out.println("cards acquired !");
             return data;
+        }
+    }
+    private void formatage(ArrayList<String> serieSTR, ArrayList<JSONObject> serieData) {
+        JSONObject json;
+        for (int i = 0; i<serieSTR.size(); i++) {
+            json = new JSONObject(serieSTR.get(i));
+            JSONObject image = (JSONObject) json.get("images");
+            json.put("images",image.get("large"));
+            if (json.get("rarity").toString().contains("ommon")) {
+                json.put("rarity","Common");
+            } else {
+                json.put("rarity","Rare");
+            }
+            serieData.add(json);
         }
     }
 
@@ -139,6 +122,8 @@ public class PokemonService {
             c.setQuantity(0);
             c.setType(carte.get("types").toString());
             c.setAcquired(false);
+
+            mesCartesRepo.save(c);
         }
     }
 
@@ -154,23 +139,56 @@ public class PokemonService {
             }
         }
     }
-    public ArrayList<JSONObject> getCommunesBW() {
+    public void initialize() {
+        if (!(initialized)) {
+            System.out.println("initializing...");
+            data = getCards();
+
+            JSONObject json;
+            // chaque carte est un string, on les transforme en objets JSON
+
+            ArrayList<String> communesBWSTR = data.get(0);
+            System.out.println(communesBWSTR);
+            formatage(communesBWSTR, communesBWData);
+            System.out.println(communesBWData);
+            addToDataBase(communesBWData);
+            System.out.println(mesCartesRepo.findAll());
+
+            ArrayList<String> raresBWSTR = data.get(1);
+            formatage(raresBWSTR, raresBWData);
+            addToDataBase(raresBWData);
+
+            ArrayList<String> communesBaseSTR = data.get(2);
+            formatage(communesBaseSTR, communesBaseData);
+            addToDataBase(communesBaseData);
+
+            ArrayList<String> raresBaseSTR = data.get(3);
+            formatage(raresBaseSTR, raresBaseData);
+            addToDataBase(raresBaseData);
+
+            initialized = true;
+            System.out.println("initialized");
+        } else {
+            System.out.println("already initialized !");
+        }
+    }
+    public ArrayList<Carte> getCommunesBW() {
         initialize();
-        return communesBWData;
+        return mesCartesRepo.findCartesByRarityAndSet("Common", "bw");
     }
 
-    public ArrayList<JSONObject> getRaresBW() {
+    public ArrayList<Carte> getRaresBW() {
         initialize();
-        return raresBWData;
+        return mesCartesRepo.findCartesByRarityAndSet("Rare", "bw");
     }
 
-    public ArrayList<JSONObject> getCommunesBase() {
+    public ArrayList<Carte> getCommunesBase() {
         initialize();
-        return communesBaseData;
+        return mesCartesRepo.findCartesByRarityAndSet("Common", "base");
     }
 
-    public ArrayList<JSONObject> getRaresBase() {
+    public ArrayList<Carte> getRaresBase() {
         initialize();
-        return raresBaseData;
+        return mesCartesRepo.findCartesByRarityAndSet("Rare", "base");
     }
 }

@@ -22,7 +22,7 @@ public class CartesController {
     @GetMapping("/mescartes")
     public String showCartes(Model model) {
 
-        List<Carte> mesCartes = mesCartesRepo.findAll();
+        List<Carte> mesCartes = mesCartesRepo.findAcquired();
 
         model.addAttribute("mesCartes", mesCartes);
 

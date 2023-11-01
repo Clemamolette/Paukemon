@@ -33,9 +33,9 @@
                 <div class="back-button">
                     <a href="boosters" class="fleche"></a>
                 </div>
-                <button class="centrer" style="align-self: center; margin-left: 36vw;">Centrer les cartes</button>
+                <button class="centrer" onclick="scrollToAltitude()" style="align-self: center; margin-left: 36vw;">Centrer les cartes</button>
             </div>
-
+            <a id="section-scroll"></a>
             <h1 style="margin-bottom: 2vh;">Clique sur les cartes pour les retourner !</h1>
 
             <div class="opening">
@@ -46,29 +46,29 @@
                     <div class="common-cards">
                         <div class="card" id="commune1">
                             <img src="/resources/static/card_back.png" alt="Dos de carte" />
-                            <img th:src="${commune1.get('images')}" th:alt="${commune1.get('name')}" />
+                            <img th:src="${commune1.getImages()}" th:alt="${commune1.getName()}" />
                         </div>
                         <div class="card" id="commune2">
                             <img src="/resources/static/card_back.png" alt="Dos de carte" />
-                            <img th:src="${commune2.get('images')}" th:alt="${commune2.get('name')}" />
+                            <img th:src="${commune2.getImages()}" th:alt="${commune2.getName()}" />
                         </div>
                         <div class="card" id="commune3">
                             <img src="/resources/static/card_back.png" alt="Dos de carte" />
-                            <img th:src="${commune3.get('images')}" th:alt="${commune3.get('name')}" />
+                            <img th:src="${commune3.getImages()}" th:alt="${commune3.getName()}" />
                         </div>
                         <div class="card" id="commune4">
                             <img src="/resources/static/card_back.png" alt="Dos de carte" />
-                            <img th:src="${commune4.get('images')}" th:alt="${commune4.get('name')}" />
+                            <img th:src="${commune4.getImages()}" th:alt="${commune4.getName()}" />
                         </div>
                     </div>
                     <div class="right-panel">
                         <div class="rare-card">
                             <div class="card card-holo" id="rare">
                                 <img src="/resources/static/card_back.png" alt="Dos de carte" />
-                                <img th:src="${rare.get('images')}" th:alt="${rare.get('name')}" />
+                                <img th:src="${rare.getImages()}" th:alt="${rare.getName()}" />
                             </div>
                         </div>
-                        <button class="ouvrirEncore" style="align-self: center;">Ouvrir un autre booster !</button>
+                        <button class="ouvrirEncore" onclick="refreshAndScrollToAltitude()" style="align-self: center;">Ouvrir un autre booster !</button>
                     </div>
                 </div>
             </div>
@@ -100,4 +100,17 @@
             });
         });
     });
+    function scrollToAltitude() {
+        var target = document.querySelector('#section-scroll');
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+    function refreshAndScrollToAltitude() {
+        var scrollPosition = window.scrollY;
+        location.href = "#section-altitude";
+        window.onload = function() {
+            window.scrollTo(0, scrollPosition);
+        };
+    }
 </script>

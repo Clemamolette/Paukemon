@@ -23,8 +23,8 @@ public class BaseOpeningController {
     @GetMapping("/openingBase")
     public String showOpeningBase(Model model) {
 
-        ArrayList<JSONObject> communesBase = cartesData.getCommunesBase();
-        ArrayList<JSONObject> raresBase = cartesData.getRaresBase();
+        ArrayList<Carte> communesBase = cartesData.getCommunesBase();
+        ArrayList<Carte> raresBase = cartesData.getRaresBase();
 
         int taille_communes = communesBase.size();
         int taille_rares = raresBase.size();
@@ -60,22 +60,14 @@ public class BaseOpeningController {
         return (int) ((Math.random() * (max - min)) + min);
     }
 
-    public void saveCarte(JSONObject carte) {
-        String id = carte.get("id").toString();
-        if (mesCartesRepo.findIDS().contains(id)) { // on ajoute 1 à la quantité de cette carte possédée
-            mesCartesRepo.updateQuantityById(id, mesCartesRepo.findQuantityByID(id) + 1);
-        } else {  // ou on créer cette nouvelle carte dans nos possessions
-            Carte c = new Carte();
-            c.setId(id);
-            c.setName(carte.get("name").toString());
-            c.setImages(carte.get("images").toString());
-            c.setHp(carte.get("hp").toString());
-            c.setRarity(carte.get("rarity").toString());
-            c.setType(carte.get("types").toString().substring(2, carte.get("types").toString().length() - 2));
-            c.setQuantity(1);
-            c.setAcquired(true);
-
-            mesCartesRepo.save(c);
+    public void saveCarte(Carte carte) {
+        // si la carte est déjà possédée, on ajoute 1 à sa quantité
+        String id = carte.getId();
+        if (mesCartesRepo.findAcquiredByID(id)) {
+            mesCartesRepo.updateQuantityById(id, mesCartesRepo.findQuantityByID(id)+1);
+        } else { // ou on update son statut
+            mesCartesRepo.updateAcquired(id);
+            mesCartesRepo.updateQuantityById(id, 1);
         }
     }
 }
