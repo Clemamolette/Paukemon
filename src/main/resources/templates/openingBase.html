@@ -35,7 +35,7 @@
                 </div>
                 <button class="centrer" onclick="scrollToAltitude()" style="align-self: center; margin-left: 36vw;">Centrer les cartes</button>
             </div>
-            <a id="section-scroll"></a>
+            <a id="opening-section"></a>
             <h1 style="margin-bottom: 2vh;">Clique sur les cartes pour les retourner !</h1>
 
             <div class="opening">
@@ -92,7 +92,7 @@
             let cardId = card.id;
 
             if (cardId === "rare") {
-                await new Promise(r => setTimeout(r, 390));
+                await new Promise(r => setTimeout(r, 400));
                 card.classList.add('glow');
                 card.classList.add('paillette');
             }
@@ -101,16 +101,16 @@
         });
     });
     function scrollToAltitude() {
-        var target = document.querySelector('#section-scroll');
+        const target = document.querySelector('#opening-section');
         if (target) {
             target.scrollIntoView({ behavior: 'smooth' });
         }
     }
     function refreshAndScrollToAltitude() {
-        var scrollPosition = window.scrollY;
-        location.href = "#section-altitude";
-        window.onload = function() {
-            window.scrollTo(0, scrollPosition);
-        };
+        location.reload();
+        const target = document.querySelector('#opening-section');
+        if (target) {
+            target.scrollIntoView();
+        }
     }
 </script>
