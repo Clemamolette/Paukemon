@@ -1,7 +1,6 @@
 package com.example.demo.Service;
 
 import com.example.demo.Model.Carte;
-import com.example.demo.Model.Pokemon;
 import com.example.demo.Repository.MesCartesRepository;
 import com.mashape.unirest.http.*;
 import com.mashape.unirest.http.exceptions.UnirestException;
@@ -33,10 +32,10 @@ public class PokemonService {
     MesCartesRepository mesCartesRepo;
 
     public ArrayList<ArrayList<String>> getCards() {
+        mesCartesRepo.deleteAll();
         HttpResponse<JsonNode> jsonResponse;
         {
             ArrayList<ArrayList<String>> data;
-            List<List<Pokemon>> pokemonList;
             try {
                 // première requête avec une extension de carte
                 jsonResponse = Unirest.get(apiURLBW1)
@@ -117,9 +116,7 @@ public class PokemonService {
             c.setName(carte.get("name").toString());
             c.setImages(carte.get("images").toString());
             c.setRarity(carte.get("rarity").toString());
-            c.setQuantity(0);
             c.setType(carte.get("types").toString());
-            c.setAcquired(false);
             if (carte.get("id").toString().startsWith("bw")) {
                 c.setSerie("bw");
             } else {

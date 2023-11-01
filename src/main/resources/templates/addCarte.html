@@ -32,16 +32,30 @@
 				<div class="back-button">
 					<a href="personnalisation" class="fleche"></a>
 				</div>
-				<h1 style="margin-left: 30vw;">Ajouter un nouveau Pokemon :</h1>
+				<h1 style="margin-left: 30vw;">Ajouter une nouvelle carte :</h1>
 			</div>
-			<form action="/addPokemon" method="POST">
+			<form action="/addCarte" method="POST">
 				<label for="nom">Nom :</label>
-				<input id="nom" name="nom">
+				<input id="nom" name="name">
+				<label for="hp">HP :</label>
+				<input id="hp" name="hp">
 				<label for="type">Type :</label>
 				<select id="type" name="type">
 					<option th:each="type : ${types}" th:value="${type.nom}">
 						<span th:text="${type.nom}"></span>
 					</option>
+				</select>
+				<label for="rarity">Rareté :</label>
+				<select id="rarity" name="rarity">
+					<option>Common</option>
+					<option>Rare</option>
+				</select>
+				<label for="image">Image (url) :</label>
+				<input id="image" name="images">
+				<label for="serie">Série :</label>
+				<select id="serie" name="serie">
+					<option>bw</option>
+					<option>base</option>
 				</select>
 				<button type="submit">Ajouter le pokemon</button>
 			</form>

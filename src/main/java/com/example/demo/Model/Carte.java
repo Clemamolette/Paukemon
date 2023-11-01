@@ -20,9 +20,9 @@ public class Carte {
     @Column
     private String serie;
     @Column
-    private Integer quantity;
+    private Integer quantity = 0;
     @Column
-    private boolean acquired;
+    private boolean acquired = false;
 
 
     public String getId() {
