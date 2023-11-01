@@ -14,27 +14,27 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class PokemonController {
+public class addCarteController {
 
     @Autowired
     PokemonRepository pokemonRepo;
     @Autowired
     TypeRepository typeRepo;
 
-    @GetMapping("/addPokemon")
+    @GetMapping("/addCarte")
     public String showPokemonForm(Model model) {
         List<Type> types = typeRepo.findAll();
         model.addAttribute("types",types);
-        return "addPokemon";
+        return "addCarte";
     }
 
-    @PostMapping("/addPokemon")
+    @PostMapping("/addCarte")
     public String addPokemon(@ModelAttribute Pokemon pokemon) {
 
         System.out.println("pokemon:"+pokemon.toString());
 
         pokemonRepo.save(pokemon);
 
-        return "redirect:/addPokemon";
+        return "redirect:/addCarte";
     }
 }

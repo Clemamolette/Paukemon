@@ -24,10 +24,10 @@ public interface MesCartesRepository extends JpaRepository<Carte, String>{
     Boolean findAcquiredByID(
             @Param("id") String id
     );
-    @Query("SELECT c FROM Carte c WHERE c.id LIKE %:set% AND c.rarity = :rarity")
+    @Query("SELECT c FROM Carte c WHERE c.serie = :serie AND c.rarity = :rarity")
     ArrayList<Carte> findCartesByRarityAndSet(
             @Param("rarity") String rarity,
-            @Param("set") String set
+            @Param("serie") String serie
     );
     @Modifying
     @Transactional

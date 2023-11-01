@@ -18,6 +18,8 @@ public class Carte {
     @Column
     private String images;
     @Column
+    private String serie;
+    @Column
     private Integer quantity;
     @Column
     private boolean acquired;
@@ -58,6 +60,12 @@ public class Carte {
     }
     public void setImages(String images) {
         this.images = images;
+    }
+    public String getSerie() {
+        return serie;
+    }
+    public void setSerie(String serie) {
+        this.serie = serie;
     }
     public Integer getQuantity() {
         return quantity;

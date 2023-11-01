@@ -33,7 +33,6 @@ public class PokemonService {
     MesCartesRepository mesCartesRepo;
 
     public ArrayList<ArrayList<String>> getCards() {
-        System.out.println("getting cards ...");
         HttpResponse<JsonNode> jsonResponse;
         {
             ArrayList<ArrayList<String>> data;
@@ -92,7 +91,6 @@ public class PokemonService {
             } catch (UnirestException e) {
                 throw new RuntimeException(e);
             }
-            System.out.println("cards acquired !");
             return data;
         }
     }
@@ -122,6 +120,11 @@ public class PokemonService {
             c.setQuantity(0);
             c.setType(carte.get("types").toString());
             c.setAcquired(false);
+            if (carte.get("id").toString().startsWith("bw")) {
+                c.setSerie("bw");
+            } else {
+                c.setSerie("base");
+            }
 
             mesCartesRepo.save(c);
         }
@@ -141,18 +144,14 @@ public class PokemonService {
     }
     public void initialize() {
         if (!(initialized)) {
-            System.out.println("initializing...");
             data = getCards();
 
             JSONObject json;
             // chaque carte est un string, on les transforme en objets JSON
 
             ArrayList<String> communesBWSTR = data.get(0);
-            System.out.println(communesBWSTR);
             formatage(communesBWSTR, communesBWData);
-            System.out.println(communesBWData);
             addToDataBase(communesBWData);
-            System.out.println(mesCartesRepo.findAll());
 
             ArrayList<String> raresBWSTR = data.get(1);
             formatage(raresBWSTR, raresBWData);
@@ -167,9 +166,6 @@ public class PokemonService {
             addToDataBase(raresBaseData);
 
             initialized = true;
-            System.out.println("initialized");
-        } else {
-            System.out.println("already initialized !");
         }
     }
     public ArrayList<Carte> getCommunesBW() {
