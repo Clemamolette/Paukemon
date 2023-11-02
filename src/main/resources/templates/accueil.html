@@ -11,8 +11,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap" rel="stylesheet">
         <link href="https://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet">
         <!-- importation des scripts et styles -->
-        <!--<script type="module" src="/resources/static/cartes.js" defer></script>-->
         <link rel="stylesheet" href="/resources/static/miseEnPage.css" />
+        <link href="https://fonts.cdnfonts.com/css/minecraftia" rel="stylesheet">
     </head>
 
     <body>
@@ -30,14 +30,17 @@
                 <a href="">Nous contacter</a>
             </nav>
         </header>
-        <div w3-include-html="header.html"></div>
 
-        <main style="width: 60%; height: 48vh;">
-            <h3> Bienvenue sur le site !</h3>
-            <fieldset>
-                <p class="pres">Ici, vous pouvez ouvrir des boosters gratuitement!</p>
-                <p class="pres">N'hésitez pas à consulter votre collection pour voir les pokemons que vous avez attrapés. </p>
-            </fieldset>
+        <main>
+            <div class="container">
+                <div class="subtitle">Attrapez-les tous dans le monde de Paukemon!</div>
+                <div class="promos">
+                    <a class="promo" href="boosters"><p>Ouvrir des Boosters</p></a>
+                    <a class="promo" href="mescartes"><p>Ma Collection</p></a>
+                    <a class="promo" href="personnalisation"><p>Personnalisation</p></a>
+                </div>
+                <img id="rayquaza" src="https://i.pinimg.com/originals/04/72/c4/0472c4edfe4c34c938175c46324c6a28.png">
+            </div>
         </main>
         <footer style="display:flex; flex-direction:column; align-items:center;">
             <p id="copyright" style="margin:2px; opacity:70%; margin-top:20px; ">coucou</p>

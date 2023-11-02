@@ -19,7 +19,6 @@ main {
     flex-direction: column;
     align-items: center;
 }
-
 header,
 footer {
     text-align: center;
@@ -42,10 +41,78 @@ header {
     font-family: 'Pokemon Solid', sans-serif;
     font-size: 100px;
 }
-.pres {
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.title {
+    font-family: 'Pokemon Solid', sans-serif;
+    font-size: 100px;
+    color: rebeccapurple;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+.subtitle {
+    font-family: 'Delicious Handrawn', sans-serif;
+    font-size: 2.3em;
+    color: rebeccapurple;
+    margin-top: -7vh;
+}
+.promos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px; /* Ajustez la hauteur en fonction de la courbe souhaitée */
+    position: relative;
+}
+.promos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px; /* Ajustez la hauteur en fonction de la courbe souhaitée */
+}
+.promo {
+    position: absolute;
+    text-decoration: none;
+    background-color: rebeccapurple;
+    color: white;
     text-align: center;
-    font-size: 23px;
-    color:rebeccapurple;
+    border-radius: 10px;
+    padding: 23px;
+    height: 9vh;
+    width: 8vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Minecraftia', sans-serif;
+}
+.promo:hover {
+    background-color: rgba(102, 51, 153, 0.75);
+    font-size: 105%;
+    animation: ease;
+}
+.promo:nth-child(1) {
+    top: 11vh;
+    left: 2vw;
+    transform: translateX(-50%);
+}
+.promo:nth-child(2) {
+    top: 28vh;
+    left: 14vw;
+    transform: translateX(-50%);
+}
+.promo:nth-child(3) {
+    top: 50vh;
+    left: 22vw;
+    transform: translateX(-50%);
+}
+#rayquaza {
+    width: 40vw;
+    margin-top: -21vh;
+    margin-left: -16vw;
 }
 fieldset {
     border:2px solid rebeccapurple;
@@ -120,3 +187,5 @@ fieldset {
 .invisible {
     display: none;
 }
+
+
