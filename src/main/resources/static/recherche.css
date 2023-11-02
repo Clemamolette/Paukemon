@@ -1,0 +1,41 @@
+form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1vw;
+}
+select {
+    background-color: white;
+}
+input,
+select {
+    width: 100%;
+    padding: 5px;
+    margin: 5px 0;
+    border: 1px solid rebeccapurple;
+    border-radius: 3px;
+}
+label {
+    font-family: 'Minecraftia', sans-serif;
+    align-self: center;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+.champ {
+    display: flex;
+    flex-direction: column;
+    border: solid rebeccapurple 2px;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 2vh;
+}
+button {
+    padding: 1.5vh;
+    background-color: rebeccapurple;
+    color: white;
+    font-size: 1em;
+    font-family: 'Minecraftia', sans-serif;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}

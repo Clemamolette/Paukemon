@@ -29,6 +29,14 @@ public interface MesCartesRepository extends JpaRepository<Carte, String>{
             @Param("rarity") String rarity,
             @Param("serie") String serie
     );
+    @Query("SELECT c FROM Carte c ORDER BY c.id")
+    ArrayList<Carte> orderByID();
+    @Query("SELECT c FROM Carte c ORDER BY c.name")
+    ArrayList<Carte> orderByName();
+    @Query("SELECT c FROM Carte c ORDER BY c.hp")
+    ArrayList<Carte> orderByHP();
+    @Query("SELECT c FROM Carte c ORDER BY c.quantity DESC")
+    ArrayList<Carte> orderByQuantity();
     @Modifying
     @Transactional
     @Query("UPDATE Carte c SET c.quantity = :quantity WHERE c.id = :id")

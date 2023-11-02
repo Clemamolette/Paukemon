@@ -86,6 +86,12 @@
     width: 30vh;
     height: auto;
 }
+.pokemon-card:hover {
+    scale: 1.05;
+}
+.grey {
+    filter: grayscale(1);
+}
 
 
 

@@ -5,10 +5,12 @@
         <title>Mes cartes</title>
         <link href="https://fonts.32tps://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.cdnfonts.com/css/minecraftia" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap" rel="stylesheet">
         <link href="https://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet">
         <link rel="stylesheet" href="/resources/static/miseEnPage.css" />
         <link rel="stylesheet" href="/resources/static/cartes.css" />
+        <link rel="stylesheet" href="/resources/static/recherche.css" />
     </head>
     <body>
         <header>
@@ -25,13 +27,52 @@
                 <a href="">Nous contacter</a>
             </nav>
         </header>
-        <div w3-include-html="header.html"></div>
 
         <main style="width: 70%;min-height: 48vh;">
             <h1>Mes cartes</h1>
+            <form id="recherche" action="/mescartes" method="GET">
+                <div class="champ">
+                    <label for="type">Type :</label>
+                    <select name="type" id="type">
+                        <option value="">Tous</option>
+                        <option th:each="type : ${types}" th:value="${type}" th:text="${type}"></option>
+                    </select>
+                </div>
+                <div class="champ">
+                    <label for="rarity">Rareté :</label>
+                    <select name="rarity" id="rarity">
+                        <option value="">Tous</option>
+                        <option value="Common">Commune</option>
+                        <option value="Rare">Rare</option>
+                    </select>
+                </div>
+                <div class="champ">
+                    <label for="serie">Série :</label>
+                    <select name="serie" id="serie">
+                        <option value="">Tous</option>
+                        <option value="bw">BW</option>
+                        <option value="base">Base</option>
+                    </select>
+                </div>
+                <div class="champ">
+                    <label for="sort">Trier par :</label>
+                    <select name="sort" id="sort">
+                        <option value="id">ID</option>
+                        <option value="name">Nom</option>
+                        <option value="hp">HP</option>
+                        <option value="quantity">Quantité</option>
+                    </select>
+                </div>
+                <div class="champ">
+                    <label for="showNonAcquired">Afficher cartes non obtenues :</label>
+                    <input type="checkbox" name="showNonAcquired" id="showNonAcquired" />
+                </div>
+                <button type="submit">Appliquer les filtres</button>
+            </form>
+
             <div class="mesCartes">
                 <div class="maCarte" th:each="carte : ${mesCartes}">
-                    <img class="pokemon-card" th:src="${carte.getImages()}" th:alt="${carte.getName()}" />
+                    <img th:class="${carte.isAcquired()} ? 'pokemon-card' : 'pokemon-card grey'" th:src="${carte.getImages()}" th:alt="${carte.getName()}" />
                     <p>Quantité : <span th:text="${carte.getQuantity()}" /></p>
                 </div>
             </div>
