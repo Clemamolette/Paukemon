@@ -4,6 +4,7 @@ import java.util.*;
 
 import com.example.demo.Model.Carte;
 import com.example.demo.Repository.MesCartesRepository;
+import com.example.demo.Repository.TypeRepository;
 import com.example.demo.Service.PokemonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,8 @@ public class CartesController {
 
     @Autowired
     private MesCartesRepository mesCartesRepo;
+    @Autowired
+    private TypeRepository typeRepo;
 
     @GetMapping("/mescartes")
     public String showCartes(Model model,
@@ -56,7 +59,7 @@ public class CartesController {
             mesCartes = mesCartesRepo.findAcquired();
         }
         model.addAttribute("mesCartes", mesCartes);
-        model.addAttribute("types", mesCartesRepo.getTypes());
+        model.addAttribute("types", typeRepo.findNoms());
 
         return "mescartes";
     }
