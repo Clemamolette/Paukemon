@@ -101,12 +101,13 @@ fieldset {
 .error, .success, .warning {
     padding: 10px;
     border-radius: 10px;
-    position: fixed;
     display: block;
+    margin: 1vw;
 }
 .error {
     background-color: salmon;
     border: solid red 2px;
+    color: white;
 }
 .success {
     background-color: lightgreen;

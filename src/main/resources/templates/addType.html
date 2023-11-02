@@ -5,10 +5,12 @@
 	<title>Ajout type</title>
 	<link href="https://fonts.32tps://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.cdnfonts.com/css/minecraftia" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap" rel="stylesheet">
 	<link href="https://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet">
 	<link rel="stylesheet" href="/resources/static/miseEnPage.css" />
 	<link rel="stylesheet" href="/resources/static/opening.css" />
+	<link rel="stylesheet" href="/resources/static/form.css" />
 </head>
 <body>
 <header>
@@ -25,30 +27,30 @@
 		<a href="">Nous contacter</a>
 	</nav>
 </header>
-<div w3-include-html="header.html"></div>
 
-<main style="height: 48vh;">
-	<div th:class="${#strings.isEmpty(failMessage)} ? 'invisible' : 'error'">
-		<p th:text="${failMessage}"></p>
-	</div>
-	<div th:class="${#strings.isEmpty(warningMessage)} ? 'invisible' : 'warning'">
-		<p th:text="${warningMessage}"></p>
-	</div>
-	<div th:class="${#strings.isEmpty(successMessage)} ? 'invisible' : 'success'">
-		<p th:text="${successMessage}"></p>
-	</div>
+<main>
 	<div class="top-panel">
 		<div class="back-button">
 			<a href="personnalisation" class="fleche"></a>
 		</div>
-		<h1 style="margin-left: 30vw;">Ajouter un nouveau type :</h1>
+		<h1>Ajouter un nouveau type :</h1>
 	</div>
 
 	<form action="/addType" method="POST">
+		<div th:class="${#strings.isEmpty(failMessage)} ? 'invisible' : 'error'">
+			<p th:text="${failMessage}"></p>
+		</div>
+		<div th:class="${#strings.isEmpty(warningMessage)} ? 'invisible' : 'warning'">
+			<p th:text="${warningMessage}"></p>
+		</div>
+		<div th:class="${#strings.isEmpty(successMessage)} ? 'invisible' : 'success'">
+			<p th:text="${successMessage}"></p>
+		</div>
 		<label for="nom">Nom :</label>
 		<input id="nom" name="nom">
 		<button type="submit">Ajouter le type</button>
 	</form>
+	<img id="energy" src="https://pa1.aminoapps.com/6295/b50081ed8ebc9092ca484855a61d85c57140b4ef_00.gif">
 </main>
 <footer style="display:flex; flex-direction:column; align-items:center;">
 	<p id="copyright" style="margin:2px; opacity:70%; margin-top:20px; ">coucou</p>
