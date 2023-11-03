@@ -57,7 +57,7 @@ button {
 
 .common-cards .card,
 .rare-card .card {
-    width: 21vh;
+    width: 15vw;
     height: 21vw;
     perspective: 1000px;
     cursor: pointer;
