@@ -116,7 +116,7 @@ public class PokemonService {
         Carte c = new Carte();
         for (JSONObject carte : data) {
             c.setId(carte.get("id").toString());
-            c.setHp(carte.get("hp").toString());
+            c.setHp(Integer.parseInt(carte.get("hp").toString()));
             c.setName(carte.get("name").toString());
             c.setImages(carte.get("images").toString());
             c.setRarity(carte.get("rarity").toString());

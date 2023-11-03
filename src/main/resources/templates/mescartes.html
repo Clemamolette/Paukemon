@@ -71,7 +71,7 @@
             </form>
 
             <div class="mesCartes">
-                <div class="maCarte" th:each="carte : ${mesCartes}">
+                <div th:each="carte : ${mesCartes}" th:class="${carte.getRarity() == 'Rare'} ? 'maCarte paillette glow' : 'maCarte'">
                     <img th:class="${carte.isAcquired()} ? 'pokemon-card' : 'pokemon-card grey'" th:src="${carte.getImages()}" th:alt="${carte.getName()}" />
                     <p>Quantité : <span th:text="${carte.getQuantity()}" /></p>
                 </div>
@@ -85,3 +85,28 @@
     </body>
 </html>
 
+<style>
+    .paillette::before {
+        content: "";
+        position: absolute;
+        width: 30vh;
+        height: 42vh;
+        background: url("https://assets.codepen.io/13471/holo.png") center/cover no-repeat;
+        mix-blend-mode: screen;
+        border-radius: 20px;
+        z-index: 8;
+        opacity: 0.9;
+    }
+    .glow::after {
+        content: "";
+        position: absolute;
+        width: 30vh;
+        height: 42vh;
+        background: url("https://assets.codepen.io/13471/sparkles.gif") center/cover no-repeat;
+        mix-blend-mode: screen;
+        border-radius: 20px;
+        z-index: 8;
+        opacity: 0.9;
+        margin-top: -42vh;
+    }
+</style>

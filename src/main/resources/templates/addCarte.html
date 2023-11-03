@@ -45,7 +45,7 @@
 				<label for="nom">Nom :</label>
 				<input id="nom" name="name">
 				<label for="hp">HP :</label>
-				<input id="hp" name="hp">
+				<input id="hp" name="hp" type="number">
 				<label for="type">Type :</label>
 				<select id="type" name="type">
 					<option th:each="type : ${types}" th:value="${type.nom}">

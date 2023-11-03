@@ -1,6 +1,7 @@
 package com.example.demo.Controller;
 
 import java.util.*;
+import java.util.regex.*;
 
 import com.example.demo.Model.Carte;
 import com.example.demo.Model.Type;
@@ -41,6 +42,20 @@ public class addCarteController {
                 return "addCarte";
             }
 
+            String hp_str = String.valueOf(carte.getHp());
+            String regex = "^\\d+$"; // Cette expression régulière correspond à une séquence de chiffres.
+            Pattern pattern = Pattern.compile(regex);
+            Matcher matcher = pattern.matcher(hp_str);
+
+            if (matcher.matches()) {
+                int hp = Integer.parseInt(hp_str);
+                carte.setHp(hp);
+            } else {
+                model.addAttribute("failMessage", "Veuillez entrer une valeur de HP correcte.");
+                model.addAttribute("types", types);
+                return "addCarte";
+            }
+
             int next_size = mesCartesRepo.findAll().size() + 1;
             String id = carte.getSerie() + next_size;
             carte.setId(id);
@@ -59,6 +74,6 @@ public class addCarteController {
     }
 
     private boolean areFieldsEmpty(Carte carte) {
-        return carte.getName().isEmpty() || carte.getHp().isEmpty() || carte.getType().isEmpty() || carte.getRarity().isEmpty() || carte.getImages().isEmpty() || carte.getSerie().isEmpty();
+        return carte.getName().isEmpty() || carte.getType().isEmpty() || carte.getRarity().isEmpty() || carte.getImages().isEmpty() || carte.getSerie().isEmpty();
     }
 }

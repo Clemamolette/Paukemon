@@ -10,7 +10,7 @@ public class Carte {
     @Column
     private String name;
     @Column
-    private String hp;
+    private int hp;
     @Column
     private String type;
     @Column
@@ -37,10 +37,10 @@ public class Carte {
     public void setName(String name) {
         this.name = name;
     }
-    public String getHp() {
+    public int getHp() {
         return hp;
     }
-    public void setHp(String hp) {
+    public void setHp(int hp) {
         this.hp = hp;
     }
     public String getType() {
