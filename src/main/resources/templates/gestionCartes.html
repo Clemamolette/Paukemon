@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Ajout type</title>
+    <link href="https://fonts.32tps://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.cdnfonts.com/css/minecraftia" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet">
+    <link rel="stylesheet" href="/resources/static/miseEnPage.css" />
+    <link rel="stylesheet" href="/resources/static/form.css" />
+    <link rel="stylesheet" href="/resources/static/cartes.css" />
+  </head>
+  <body>
+    <header>
+      <div style="display:flex;flex-direction:row; justify-content:center; align-items:center;">
+        <div class="titre">Paukem</div>
+        <img id="fantominus" src="https://www.pokebip.com/pokedex/images/e_animees/092.gif" alt="Petit fantominus qui se cache">
+        <div class="titre">n</div>
+      </div>
+      <nav id="liens">
+        <a href="accueil">Accueil</a>
+        <a href="boosters">Boosters</a>
+        <a href="mescartes">Mes cartes</a>
+        <a href="personnalisation">Personnalisation</a>
+        <a href="">Nous contacter</a>
+      </nav>
+    </header>
+
+    <main>
+      <div class="top-panel">
+        <div class="back-button">
+          <a href="/personnalisation" class="fleche"></a>
+        </div>
+        <h1>Gérer mes cartes ajoutées :</h1>
+      </div>
+
+      <div class="mesCartes">
+        <div th:each="carte : ${cartesCustom}" class="carteCustom">
+          <img class="pokemon-card" th:src="${carte.getImages()}" th:alt="${carte.getName()}" />
+          <div class="attributs">
+            <p>Nom : <span th:text="${carte.getName()}" /></p>
+            <p>HP : <span th:text="${carte.getHp()}" /></p>
+            <p>Type : <span th:text="${carte.getType()}" /></p>
+            <p>Rareté : <span th:text="${carte.getRarity()}" /></p>
+            <p>Image (url) : <span th:text="${carte.getImages()}" /></p>
+            <p>Série : <span th:text="${carte.getSerie()}" /></p>
+          </div>
+          <form th:action="@{/modifierCarte/{id}(id=${carte.id})}" id="modify" method="get">
+            <button type="submit">Modifier</button>
+          </form>
+          <form th:action="@{/supprimerCarte/{id}(id=${carte.id})}" id="delete" method="post">
+            <button type="submit">Supprimer</button>
+          </form>
+        </div>
+      </div>
+
+
+    </main>
+    <footer style="display:flex; flex-direction:column; align-items:center;">
+      <p id="copyright" style="margin:2px; opacity:70%; margin-top:20px; ">coucou</p>
+      <p style="margin:2px;opacity:70%;">©2023 Clémentine. Tous droits réservés.</p>
+    </footer>
+  </body>
+</html>

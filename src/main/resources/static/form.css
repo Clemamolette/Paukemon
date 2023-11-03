@@ -1,4 +1,4 @@
-form {
+.form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -48,4 +48,27 @@ button {
 #energy {
     border-radius: 20vw;
     margin-top: 2vw;
+}
+#modify, #delete {
+    align-self: center;
+}
+#modify button, #delete button {
+    width: 7vw;
+    height: 5vh;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+#modify button:hover, #delete button:hover {
+    opacity: 0.8;
+}
+#delete button {
+    background-color: rebeccapurple;
+    color: white;
+    border: solid white 2px;
+}
+#modify button {
+    background-color: lavender;
+    border: solid black 2px;
 }

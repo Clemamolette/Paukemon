@@ -18,6 +18,10 @@ public interface MesCartesRepository extends JpaRepository<Carte, String>{
     Integer findQuantityByID(
             @Param("id") String id
     );
+    @Query("SELECT c FROM Carte c WHERE c.id = :id")
+    Carte findCarteByID(
+            @Param("id") String id
+    );
     @Query("SELECT c.acquired FROM Carte c WHERE c.id = :id")
     Boolean findAcquiredByID(
             @Param("id") String id
@@ -37,6 +41,8 @@ public interface MesCartesRepository extends JpaRepository<Carte, String>{
     ArrayList<Carte> orderByHP();
     @Query("SELECT c FROM Carte c ORDER BY c.quantity DESC")
     ArrayList<Carte> orderByQuantity();
+    @Query("SELECT c FROM Carte c WHERE c.id LIKE '%_custom'")
+    ArrayList<Carte> getCustom();
     @Modifying
     @Transactional
     @Query("UPDATE Carte c SET c.quantity = :quantity WHERE c.id = :id")
@@ -49,5 +55,47 @@ public interface MesCartesRepository extends JpaRepository<Carte, String>{
     @Query("UPDATE Carte c SET c.acquired = true WHERE c.id = :id")
     void updateAcquired(
             @Param("id") String id
+    );
+    @Modifying
+    @Transactional
+    @Query("UPDATE Carte c SET c.name = :name WHERE c.id = :id")
+    void updateName(
+            @Param("id") String id,
+            @Param("name") String name
+    );
+    @Modifying
+    @Transactional
+    @Query("UPDATE Carte c SET c.hp = :hp WHERE c.id = :id")
+    void updateHp(
+            @Param("id") String id,
+            @Param("hp") int hp
+    );
+    @Modifying
+    @Transactional
+    @Query("UPDATE Carte c SET c.type = :type WHERE c.id = :id")
+    void updateType(
+            @Param("id") String id,
+            @Param("type") String type
+    );
+    @Modifying
+    @Transactional
+    @Query("UPDATE Carte c SET c.rarity = :rarity WHERE c.id = :id")
+    void updateRarity(
+            @Param("id") String id,
+            @Param("rarity") String rarity
+    );
+    @Modifying
+    @Transactional
+    @Query("UPDATE Carte c SET c.images = :images WHERE c.id = :id")
+    void updateImage(
+            @Param("id") String id,
+            @Param("images") String images
+    );
+    @Modifying
+    @Transactional
+    @Query("UPDATE Carte c SET c.serie = :serie WHERE c.id = :id")
+    void updateSerie(
+            @Param("id") String id,
+            @Param("serie") String serie
     );
 }

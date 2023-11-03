@@ -57,7 +57,7 @@ public class addCarteController {
             }
 
             int next_size = mesCartesRepo.findAll().size() + 1;
-            String id = carte.getSerie() + next_size;
+            String id = carte.getSerie() + next_size + "_custom";
             carte.setId(id);
 
             mesCartesRepo.save(carte);

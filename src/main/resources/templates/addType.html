@@ -36,7 +36,7 @@
 		<h1>Ajouter un nouveau type :</h1>
 	</div>
 
-	<form action="/addType" method="POST">
+	<form action="/addType" method="POST" class="form">
 		<div th:class="${#strings.isEmpty(failMessage)} ? 'invisible' : 'error'">
 			<p th:text="${failMessage}"></p>
 		</div>

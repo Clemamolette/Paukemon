@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Ajout type</title>
+    <link href="https://fonts.32tps://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.cdnfonts.com/css/minecraftia" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet">
+    <link rel="stylesheet" href="/resources/static/miseEnPage.css" />
+    <link rel="stylesheet" href="/resources/static/form.css" />
+    <link rel="stylesheet" href="/resources/static/cartes.css" />
+  </head>
+  <body>
+    <header>
+      <div style="display:flex;flex-direction:row; justify-content:center; align-items:center;">
+        <div class="titre">Paukem</div>
+        <img id="fantominus" src="https://www.pokebip.com/pokedex/images/e_animees/092.gif" alt="Petit fantominus qui se cache">
+        <div class="titre">n</div>
+      </div>
+      <nav id="liens">
+        <a href="accueil">Accueil</a>
+        <a href="boosters">Boosters</a>
+        <a href="mescartes">Mes cartes</a>
+        <a href="personnalisation">Personnalisation</a>
+        <a href="">Nous contacter</a>
+      </nav>
+    </header>
+
+    <main>
+      <div class="top-panel">
+        <div class="back-button">
+          <a href="/personnalisation" class="fleche"></a>
+        </div>
+        <h1>Modifier la carte</h1>
+      </div>
+
+      <form th:action="@{/modifierCarte}" method="post" th:object="${carte}" class="form" >
+        <input type="hidden" th:field="*{id}" />
+
+        <p>Nom : <input type="text" th:field="*{name}" /></p>
+
+        <p>HP : <input type="number" th:field="*{hp}" /></p>
+
+        <p>Type :
+          <select th:field="*{type}">
+            <option th:each="type : ${types}" th:value="${type}" th:text="${type}" th:selected="${type == carte.type}"></option>
+          </select>
+        </p>
+
+        <p>Rareté :
+          <select th:field="*{rarity}">
+            <option value="Rare" th:selected="${carte.rarity == 'Rare'}">Rare</option>
+            <option value="Commune" th:selected="${carte.rarity == 'Commune'}">Commune</option>
+          </select>
+        </p>
+
+        <p>Image (url) : <input type="text" th:field="*{images}" /></p>
+
+        <p>Série :
+          <select th:field="*{serie}">
+            <option value="bw" th:selected="${carte.serie == 'bw'}">bw</option>
+            <option value="base" th:selected="${carte.serie == 'base'}">base</option>
+          </select>
+        </p>
+
+        <button type="submit">Enregistrer les modifications</button>
+      </form>
+
+    </main>
+    <footer style="display:flex; flex-direction:column; align-items:center;">
+      <p id="copyright" style="margin:2px; opacity:70%; margin-top:20px; ">coucou</p>
+      <p style="margin:2px;opacity:70%;">©2023 Clémentine. Tous droits réservés.</p>
+    </footer>
+  </body>
+</html>

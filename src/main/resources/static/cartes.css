@@ -90,5 +90,24 @@
     filter: grayscale(1);
 }
 
+.carteCustom {
+    display: flex;
+    flex-direction: row;
+    gap: 2vw;
+}
+.attributs {
+    width: 34vw;
+    overflow: scroll;
+    align-self: center;
+}
+.attributs p {
+    font-family: 'Minecraftia', sans-serif;
+    font-weight: bold;
+}
+.attributs p span {
+    font-family: "Open Sans", sans-serif;
+    font-weight: lighter;
+}
+
 
 

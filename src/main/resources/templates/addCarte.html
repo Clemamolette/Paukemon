@@ -35,7 +35,7 @@
 				</div>
 				<h1>Ajouter une nouvelle carte :</h1>
 			</div>
-			<form action="/addCarte" method="POST">
+			<form action="/addCarte" method="POST" class="form">
 				<div th:class="${#strings.isEmpty(failMessage)} ? 'invisible' : 'error'">
 					<p th:text="${failMessage}"></p>
 				</div>
@@ -64,7 +64,7 @@
 					<option>bw</option>
 					<option>base</option>
 				</select>
-				<button type="submit">Ajouter le pokemon</button>
+				<button type="submit">Ajouter la carte</button>
 			</form>
 
 		</main>
