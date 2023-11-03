@@ -20,10 +20,10 @@
 				<div class="titre">n</div>
 			</div>
 			<nav id="liens">
-				<a href="accueil">Accueil</a>
-				<a href="boosters">Boosters</a>
-				<a href="mescartes">Mes cartes</a>
-				<a href="personnalisation">Personnalisation</a>
+				<a href="/accueil">Accueil</a>
+				<a href="/boosters">Boosters</a>
+				<a href="/mescartes">Mes cartes</a>
+				<a href="/personnalisation">Personnalisation</a>
 				<a href="">Nous contacter</a>
 			</nav>
 		</header>
@@ -45,7 +45,7 @@
 				<label for="nom">Nom :</label>
 				<input id="nom" name="name">
 				<label for="hp">HP :</label>
-				<input id="hp" name="hp" type="number">
+				<input id="hp" name="hp" type="number" th:field="${defaultHP}">
 				<label for="type">Type :</label>
 				<select id="type" name="type">
 					<option th:each="type : ${types}" th:value="${type.nom}">

@@ -43,7 +43,7 @@ button {
     background-color: rebeccapurple;
     color: white;
     font-size: 1em;
-    font-family: 'Minecraftia', sans-serif !important;
+    font-family: 'Minecraftia', sans-serif;
     border-radius: 10px;
     border: none;
 }

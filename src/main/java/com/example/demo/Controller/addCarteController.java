@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,11 +29,12 @@ public class addCarteController {
     public String showCarteForm(Model model) {
         List<Type> types = typeRepo.findAll();
         model.addAttribute("types",types);
+        model.addAttribute("defaultHP",80);
         return "addCarte";
     }
 
     @PostMapping("/addCarte")
-    public String addCarte(@ModelAttribute Carte carte, Model model) {
+    public String addCarte(@ModelAttribute @Validated Carte carte, Model model) {
 
         try {
             List<Type> types = typeRepo.findAll();
@@ -39,6 +42,7 @@ public class addCarteController {
             if (areFieldsEmpty(carte)) {
                 model.addAttribute("failMessage", "Veuillez remplir tous les champs.");
                 model.addAttribute("types", types);
+                model.addAttribute("defaultHP",80);
                 return "addCarte";
             }
 
@@ -47,12 +51,13 @@ public class addCarteController {
             Pattern pattern = Pattern.compile(regex);
             Matcher matcher = pattern.matcher(hp_str);
 
-            if (matcher.matches()) {
+            if (matcher.matches() || hp_str.isEmpty()) {
                 int hp = Integer.parseInt(hp_str);
                 carte.setHp(hp);
             } else {
                 model.addAttribute("failMessage", "Veuillez entrer une valeur de HP correcte.");
                 model.addAttribute("types", types);
+                model.addAttribute("defaultHP",80);
                 return "addCarte";
             }
 
@@ -62,12 +67,14 @@ public class addCarteController {
 
             mesCartesRepo.save(carte);
             model.addAttribute("types",types);
+            model.addAttribute("defaultHP",80);
             model.addAttribute("successMessage", "La carte a été ajoutée avec succès !");
 
             return "addCarte";
-        } catch (DataIntegrityViolationException e) {
+        } catch (Exception e) {
             List<Type> types = typeRepo.findAll();
             model.addAttribute("types",types);
+            model.addAttribute("defaultHP",80);
             model.addAttribute("failMessage", "Chaînes de caractères trop longues.");
             return "addCarte";
         }
