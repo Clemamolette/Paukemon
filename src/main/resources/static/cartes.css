@@ -20,23 +20,23 @@
     z-index: 98;
     text-decoration: none;
     margin: 10px;
-    width: 70%;
+    width: 13vw;
     float: left;
     box-shadow: 0 0 2px 2px rgba(0,0,0,.05);
     background: rebeccapurple;
     border-radius: 20px;
     transition: .15s all ease;
-    align-items: center;
+    justify-content: center;
     display: flex;
     flex-direction: column;
-    height: 25vh;
+    height: 26vh;
 }
 .card-container .card:hover {
     transform: scale(1.025);
     transition: .35s all ease;
 }
 .card-container .card img {
-    width: 100px;
+    width: 6vw;
     height: auto;
     padding: 0;
     margin: 0;
@@ -48,7 +48,7 @@
 }
 .card-container .card h3 {
     text-align: center;
-    font-size: 23px;
+    font-size: 2.5vh;
     color: lavender;
     opacity: 0.9;
     margin-bottom: 20px;
