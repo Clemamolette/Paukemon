@@ -29,4 +29,4 @@ Located line 24.
 
 ### Explore the website
 
-You have to go to http://localhost:8080 on your browser.
+You have to go to http://localhost:8080 on your browser and be connected to an Internet connection.

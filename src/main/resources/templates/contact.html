@@ -29,42 +29,38 @@
 		</header>
 
 		<main>
-			<div class="top-panel">
-				<div class="back-button">
-					<a href="personnalisation" class="fleche"></a>
-				</div>
-				<h1>Ajouter une nouvelle carte :</h1>
-			</div>
-			<form action="/addCarte" method="POST" class="form">
+			<h1 style="margin-top: 0">Nous contacter : </h1>
+
+			<form action="/contact" method="POST" class="form">
 				<div th:class="${#strings.isEmpty(failMessage)} ? 'invisible' : 'error'">
 					<p th:text="${failMessage}"></p>
 				</div>
 				<div th:class="${#strings.isEmpty(successMessage)} ? 'invisible' : 'success'">
 					<p th:text="${successMessage}"></p>
 				</div>
-				<label for="nom">Nom :</label>
-				<input id="nom" name="name">
-				<label for="hp">HP :</label>
-				<input id="hp" name="hp" type="number" th:field="${defaultHP}">
-				<label for="type">Type :</label>
-				<select id="type" name="type">
-					<option th:each="type : ${types}" th:value="${type.nom}">
-						<span th:text="${type.nom}"></span>
-					</option>
+				<label for="prenom">Votre prénom :</label>
+				<input id="prenom" name="prenom">
+				<label for="situation">Qui êtes-vous :</label>
+				<select id="situation" name="situation">
+					<option>Étudiant</option>
+					<option>Professeur</option>
+					<option>Autre</option>
 				</select>
-				<label for="rarity">Rareté :</label>
-				<select id="rarity" name="rarity">
-					<option>Common</option>
-					<option>Rare</option>
+				<label for="email">Votre adresse e-mail :</label>
+				<input id="email" name="email">
+				<label for="demande">Objectif de votre demande :</label>
+				<select id="demande" name="demande">
+					<option>Ajout de séries de cartes/boosters</option>
+					<option>Problème technique</option>
+					<option>Vous êtes perdu sur le site</option>
+					<option>Recommandation, idées d'ajouts</option>
+					<option>Un petit mot gentil</option>
+					<option>Autre</option>
 				</select>
-				<label for="image">Image (url) :</label>
-				<input id="image" name="images">
-				<label for="serie">Série :</label>
-				<select id="serie" name="serie">
-					<option>bw</option>
-					<option>base</option>
-				</select>
-				<button type="submit">Ajouter la carte</button>
+				<label for="contenu">Contenu de votre message :</label>
+				<input id="contenu" name="contenu">
+
+				<button type="submit">Envoyer</button>
 			</form>
 
 		</main>
