@@ -21,7 +21,7 @@ public class PokemonService {
     private String apiURLBW2 = "https://api.pokemontcg.io/v2/cards?select=id,name,hp,types,nationalPokedexNumbers,images,rarity,supertype&q=set.id:bw2";
     private String apiURLBase1 = "https://api.pokemontcg.io/v2/cards?select=id,name,hp,types,nationalPokedexNumbers,images,rarity,supertype&q=set.id:base1";
     private String apiURLBase2 = "https://api.pokemontcg.io/v2/cards?select=id,name,hp,types,nationalPokedexNumbers,images,rarity,supertype&q=set.id:base2";
-    private String apiKEY = "e030d28b-a210-4552-bec5-3b63be6b970b";
+    private String apiKEY = "";
     private ArrayList<ArrayList<String>> data;
 
     protected boolean initialized = false;

@@ -38,7 +38,7 @@ h1 {
 .top-panel {
     display: grid;
     flex-direction: row;
-    width: -moz-available;
+    width: 96vw;
 }
 button {
     margin-top: 2vh;
