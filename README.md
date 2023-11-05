@@ -27,6 +27,6 @@ private String apiKEY = "";
 ```
 Located line 24.
 
-### Explore the the website
+### Explore the website
 
 You have to go to http://localhost:8080 on your browser.
