@@ -18,7 +18,7 @@ main {
     display:flex;
     flex-direction: column;
     align-items: center;
-    min-height: 50vh;
+    min-height: 53vh;
 }
 header,
 footer {
@@ -187,6 +187,11 @@ fieldset {
 }
 .invisible {
     display: none;
+}
+#copyright a {
+    text-decoration: none;
+    color: white;
+    font-style: italic;
 }
 
 

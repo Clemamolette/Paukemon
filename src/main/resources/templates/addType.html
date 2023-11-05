@@ -1,63 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Ajout type</title>
-	<link href="https://fonts.32tps://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.cdnfonts.com/css/minecraftia" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap" rel="stylesheet">
-	<link href="https://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet">
-	<link rel="stylesheet" href="/resources/static/miseEnPage.css" />
-	<link rel="stylesheet" href="/resources/static/opening.css" />
-	<link rel="stylesheet" href="/resources/static/form.css" />
-</head>
-<body>
-<header>
-	<div style="display:flex;flex-direction:row; justify-content:center; align-items:center;">
-		<div class="titre">Paukem</div>
-		<img id="fantominus" src="https://www.pokebip.com/pokedex/images/e_animees/092.gif" alt="Petit fantominus qui se cache">
-		<div class="titre">n</div>
-	</div>
-	<nav id="liens">
-		<a href="/accueil">Accueil</a>
-		<a href="/boosters">Boosters</a>
-		<a href="/mescartes">Mes cartes</a>
-		<a href="/personnalisation">Personnalisation</a>
-		<a href="/contact">Nous contacter</a>
-	</nav>
-</header>
+	<head>
+		<meta charset="UTF-8">
+		<title>Ajout type</title>
+		<link href="https://fonts.32tps://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.cdnfonts.com/css/minecraftia" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap" rel="stylesheet">
+		<link href="https://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet">
+		<link rel="stylesheet" href="/resources/static/miseEnPage.css" />
+		<link rel="stylesheet" href="/resources/static/opening.css" />
+		<link rel="stylesheet" href="/resources/static/form.css" />
+	</head>
+	<body>
+		<header>
+			<div style="display:flex;flex-direction:row; justify-content:center; align-items:center;">
+				<div class="titre">Paukem</div>
+				<img id="fantominus" src="https://www.pokebip.com/pokedex/images/e_animees/092.gif" alt="Petit fantominus qui se cache">
+				<div class="titre">n</div>
+			</div>
+			<nav id="liens">
+				<a href="/accueil">Accueil</a>
+				<a href="/boosters">Boosters</a>
+				<a href="/mescartes">Mes cartes</a>
+				<a href="/personnalisation">Personnalisation</a>
+				<a href="/contact">Nous contacter</a>
+			</nav>
+		</header>
 
-<main>
-	<div class="top-panel">
-		<div class="back-button">
-			<a href="personnalisation" class="fleche"></a>
-		</div>
-		<h1>Ajouter un nouveau type :</h1>
-	</div>
+		<main>
+			<div class="top-panel">
+				<div class="back-button">
+					<a href="personnalisation" class="fleche"></a>
+				</div>
+				<h1>Ajouter un nouveau type :</h1>
+			</div>
 
-	<form action="/addType" method="POST" class="form">
-		<div th:class="${#strings.isEmpty(failMessage)} ? 'invisible' : 'error'">
-			<p th:text="${failMessage}"></p>
-		</div>
-		<div th:class="${#strings.isEmpty(warningMessage)} ? 'invisible' : 'warning'">
-			<p th:text="${warningMessage}"></p>
-		</div>
-		<div th:class="${#strings.isEmpty(successMessage)} ? 'invisible' : 'success'">
-			<p th:text="${successMessage}"></p>
-		</div>
-		<label for="nom">Nom :</label>
-		<input id="nom" name="nom">
-		<button type="submit">Ajouter le type</button>
-	</form>
-	<img id="energy" src="https://pa1.aminoapps.com/6295/b50081ed8ebc9092ca484855a61d85c57140b4ef_00.gif">
-</main>
-<footer style="display:flex; flex-direction:column; align-items:center;">
-	<p id="copyright" style="margin:2px; opacity:70%; margin-top:20px; ">coucou</p>
-	<p style="margin:2px;opacity:70%;">©2023 Clémentine. Tous droits réservés.</p>
-
-
-
-</footer>
-</body>
+			<form action="/addType" method="POST" class="form">
+				<div th:class="${#strings.isEmpty(failMessage)} ? 'invisible' : 'error'">
+					<p th:text="${failMessage}"></p>
+				</div>
+				<div th:class="${#strings.isEmpty(warningMessage)} ? 'invisible' : 'warning'">
+					<p th:text="${warningMessage}"></p>
+				</div>
+				<div th:class="${#strings.isEmpty(successMessage)} ? 'invisible' : 'success'">
+					<p th:text="${successMessage}"></p>
+				</div>
+				<label for="nom">Nom :</label>
+				<input id="nom" name="nom">
+				<button type="submit">Ajouter le type</button>
+			</form>
+			<img id="energy" src="https://pa1.aminoapps.com/6295/b50081ed8ebc9092ca484855a61d85c57140b4ef_00.gif">
+		</main>
+		<footer style="display:flex; flex-direction:column; align-items:center;">
+			<p style="margin:2px;opacity:70%;">©2023 Clémentine. Tous droits réservés.</p>
+			<p id="copyright" style="margin:2px; opacity:70%;">Gif des énergies Pokemon par <a href="https://aminoapps.com/c/pokemon-trading-card-game/page/user/eevee/XNGD_PpSdfRnJowmoBVNq2qdWKkbkNQXwP">Eevee</a></p>
+		</footer>
+	</body>
 </html>
