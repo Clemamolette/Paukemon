@@ -69,7 +69,12 @@
     margin-top: 6vh;
 }
 .maCarte {
-    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+.maCarte p {
+    font-weight: bold;
 }
 
 /* affichage des cartes pokemon*/

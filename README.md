@@ -11,9 +11,9 @@ This path is the absolute one to the folder "resources" where the application.pr
 
 The variable should have this syntax :
 ```
-spring.datasource.url=jdbc:h2:file:/absolute/path/to/resources
+spring.datasource.url=jdbc:h2:file:/absolute/path/to/projectFolder/paukemon/src/main/resources
 ```
-Only the "/absolute/path/to/resources" has to be changed.
+Only the "/absolute/path/to/projectFolder" has to be changed, projectFolder being the folder where the project has been downloaded.
 
 ### (optional) Set up the API key
 

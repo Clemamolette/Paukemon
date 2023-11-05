@@ -46,6 +46,7 @@ button {
     font-family: 'Minecraftia', sans-serif;
     border-radius: 10px;
     border: none;
+    cursor: pointer;
 }
 
 .common-cards {

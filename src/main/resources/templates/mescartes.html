@@ -73,7 +73,7 @@
             <div class="mesCartes">
                 <div th:each="carte : ${mesCartes}" th:class="${carte.getRarity() == 'Rare'} ? 'maCarte paillette glow' : 'maCarte'">
                     <img th:class="${carte.isAcquired()} ? 'pokemon-card' : 'pokemon-card grey'" th:src="${carte.getImages()}" th:alt="${carte.getName()}" />
-                    <p>Quantité : <span th:text="${carte.getQuantity()}" /></p>
+                    <p>x <span th:text="${carte.getQuantity()}" /></p>
                 </div>
             </div>
         </main>
@@ -106,6 +106,5 @@
         border-radius: 20px;
         z-index: 8;
         opacity: 0.9;
-        margin-top: -42vh;
     }
 </style>
