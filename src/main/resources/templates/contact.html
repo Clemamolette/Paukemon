@@ -14,7 +14,7 @@
 	</head>
 	<body>
 		<header>
-			<div style="display:flex;flex-direction:row; justify-content:center; align-items:center;">
+			<div style="display:flex;flex-direction:row; justify-content:center; align-items:center;margin-top: -6em;">
 				<div class="titre">Paukem</div>
 				<img id="fantominus" src="https://www.pokebip.com/pokedex/images/e_animees/092.gif" alt="Petit fantominus qui se cache">
 				<div class="titre">n</div>
@@ -31,7 +31,7 @@
 		<main>
 			<h1 style="margin-top: 0">Nous contacter : </h1>
 
-			<form action="/contact" method="POST" class="form">
+			<form action="mailto:clementinegalloy@outlook.fr" method="POST" class="form">
 				<div th:class="${#strings.isEmpty(failMessage)} ? 'invisible' : 'error'">
 					<p th:text="${failMessage}"></p>
 				</div>
