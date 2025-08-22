@@ -4,7 +4,7 @@
 
 ### Configuration de la version
 
-This project uses Java 21.
+Ce projet utilise Java 21.
 
 
 ### Lancer l'application
@@ -24,7 +24,7 @@ L'image Docker est bien construite quand le script se termine sans message d'err
 
 ### Explorer le site
 
-Saisissez l'adresse http://localhost:8080 dans votre navigateur préféré. Une connexion est nécessaire pour les appels à l'API fournissant les cartes.
+Saisissez l'adresse http://localhost:8080 dans votre navigateur préféré. Une connexion Internet est nécessaire pour les appels à l'API fournissant les cartes.
 
 ### Point d'attention !
 
